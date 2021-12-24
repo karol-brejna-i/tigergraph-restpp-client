@@ -763,12 +763,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [AnyObject](docs/AnyObject.md)
  - [HelloResponse](docs/HelloResponse.md)
  - [MessageResponse](docs/MessageResponse.md)
  - [QueryResponse](docs/QueryResponse.md)
  - [QueryResponseVersion](docs/QueryResponseVersion.md)
  - [StatisticsResponse](docs/StatisticsResponse.md)
- - [StatisticsResponseGETStatisticsgraphName](docs/StatisticsResponseGETStatisticsgraphName.md)
 
 ## Documentation for Authorization
 

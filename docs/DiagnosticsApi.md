@@ -104,7 +104,7 @@ No authorization required
 
 <a name="endpoints"></a>
 # **endpoints**
-> HelloResponse endpoints(graphName, builtin, dynamic, _static)
+> AnyObject endpoints(graphName, builtin, dynamic, _static)
 
 List all endpoints
 
@@ -123,7 +123,7 @@ Boolean builtin = true; // Boolean | trueEndpoints presinstalled in TigerGraph (
 Boolean dynamic = true; // Boolean | trueEndpoints generated when installing GSQL queries.
 Boolean _static = true; // Boolean | trueUser installed endpoints.
 try {
-    HelloResponse result = apiInstance.endpoints(graphName, builtin, dynamic, _static);
+    AnyObject result = apiInstance.endpoints(graphName, builtin, dynamic, _static);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DiagnosticsApi#endpoints");
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**HelloResponse**](HelloResponse.md)
+[**AnyObject**](AnyObject.md)
 
 ### Authorization
 

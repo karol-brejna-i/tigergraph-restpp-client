@@ -12,6 +12,7 @@
 
 package io.github.karol_brejna_i.tigergraph.restppclient.api;
 
+import io.github.karol_brejna_i.tigergraph.restppclient.model.AnyObject;
 import io.github.karol_brejna_i.tigergraph.restppclient.model.HelloResponse;
 import io.github.karol_brejna_i.tigergraph.restppclient.model.StatisticsResponse;
 import org.junit.Test;
@@ -76,7 +77,7 @@ public class DiagnosticsApiTest {
         Boolean builtin = null;
         Boolean dynamic = null;
         Boolean _static = null;
-        HelloResponse response = api.endpoints(graphName, builtin, dynamic, _static);
+        AnyObject response = api.endpoints(graphName, builtin, dynamic, _static);
 
         // TODO: test validations
     }
