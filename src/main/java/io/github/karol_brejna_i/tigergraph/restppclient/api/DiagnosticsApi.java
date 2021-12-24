@@ -448,6 +448,316 @@ public class DiagnosticsApi {
         return call;
     }
     /**
+     * Build call for rebuildnowGet
+     * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
+     * @param threadnum Number of threads used to execute the rebuild. If not specified, the number specified in the .tg.cfg file  (\&quot;RebuildThreadNumber\&quot;) in the home directory of the server on which TigerGraph  is running will be used; it is set to 3 by default.  The maximum value for this parameter is the number of vCPUs per node in your distributed system.  If you are running a single-node server, the maximum is the number of vCPUs on that node.  You can run lscpu in the command line of your Linux server and look in the CPU(s)  column to view the number of vCPUs.  (optional)
+     * @param vertextype Vertex type to perform the rebuild for. If not provided, the rebuild will be run for all the vertex types.  (optional)
+     * @param segid Segment ID of the segments to rebuild. If not provided, all segments will be rebuilt.  In general, it is recommended not to provide this parameter and rebuild all segments.  (optional)
+     * @param path Path to save the summary of the rebuild to. If not provided, the default path is /tmp/rebuildnow  (optional)
+     * @param force Boolean value that indicates whether to perform rebuilds for segments for which there are no records of new data.  Normally, a rebuild would skip such segments, but if force is set true, the segments will not be skipped.  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call rebuildnowGetCall(String graphName, Integer threadnum, String vertextype, Integer segid, String path, Boolean force, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/rebuildnow/{graph_name}"
+            .replaceAll("\\{" + "graph_name" + "\\}", apiClient.escapeString(graphName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (threadnum != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("threadnum", threadnum));
+        if (vertextype != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("vertextype", vertextype));
+        if (segid != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("segid", segid));
+        if (path != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("path", path));
+        if (force != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("force", force));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call rebuildnowGetValidateBeforeCall(String graphName, Integer threadnum, String vertextype, Integer segid, String path, Boolean force, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'graphName' is set
+        if (graphName == null) {
+            throw new ApiException("Missing the required parameter 'graphName' when calling rebuildnowGet(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = rebuildnowGetCall(graphName, threadnum, vertextype, segid, path, force, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Rebuild graph engine
+     * In TigerGraph, when new data is being loaded into the graph (such as new vertices or edges),  data is first stored in memory before it is saved to disk permanently.  TigerGraph runs a rebuild of the Graph Processing Engine (GPE) to commit the data in memory to disk  every 30 seconds, but you can also call this endpoint to trigger a rebuild immediately. 
+     * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
+     * @param threadnum Number of threads used to execute the rebuild. If not specified, the number specified in the .tg.cfg file  (\&quot;RebuildThreadNumber\&quot;) in the home directory of the server on which TigerGraph  is running will be used; it is set to 3 by default.  The maximum value for this parameter is the number of vCPUs per node in your distributed system.  If you are running a single-node server, the maximum is the number of vCPUs on that node.  You can run lscpu in the command line of your Linux server and look in the CPU(s)  column to view the number of vCPUs.  (optional)
+     * @param vertextype Vertex type to perform the rebuild for. If not provided, the rebuild will be run for all the vertex types.  (optional)
+     * @param segid Segment ID of the segments to rebuild. If not provided, all segments will be rebuilt.  In general, it is recommended not to provide this parameter and rebuild all segments.  (optional)
+     * @param path Path to save the summary of the rebuild to. If not provided, the default path is /tmp/rebuildnow  (optional)
+     * @param force Boolean value that indicates whether to perform rebuilds for segments for which there are no records of new data.  Normally, a rebuild would skip such segments, but if force is set true, the segments will not be skipped.  (optional)
+     * @return HelloResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public HelloResponse rebuildnowGet(String graphName, Integer threadnum, String vertextype, Integer segid, String path, Boolean force) throws ApiException {
+        ApiResponse<HelloResponse> resp = rebuildnowGetWithHttpInfo(graphName, threadnum, vertextype, segid, path, force);
+        return resp.getData();
+    }
+
+    /**
+     * Rebuild graph engine
+     * In TigerGraph, when new data is being loaded into the graph (such as new vertices or edges),  data is first stored in memory before it is saved to disk permanently.  TigerGraph runs a rebuild of the Graph Processing Engine (GPE) to commit the data in memory to disk  every 30 seconds, but you can also call this endpoint to trigger a rebuild immediately. 
+     * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
+     * @param threadnum Number of threads used to execute the rebuild. If not specified, the number specified in the .tg.cfg file  (\&quot;RebuildThreadNumber\&quot;) in the home directory of the server on which TigerGraph  is running will be used; it is set to 3 by default.  The maximum value for this parameter is the number of vCPUs per node in your distributed system.  If you are running a single-node server, the maximum is the number of vCPUs on that node.  You can run lscpu in the command line of your Linux server and look in the CPU(s)  column to view the number of vCPUs.  (optional)
+     * @param vertextype Vertex type to perform the rebuild for. If not provided, the rebuild will be run for all the vertex types.  (optional)
+     * @param segid Segment ID of the segments to rebuild. If not provided, all segments will be rebuilt.  In general, it is recommended not to provide this parameter and rebuild all segments.  (optional)
+     * @param path Path to save the summary of the rebuild to. If not provided, the default path is /tmp/rebuildnow  (optional)
+     * @param force Boolean value that indicates whether to perform rebuilds for segments for which there are no records of new data.  Normally, a rebuild would skip such segments, but if force is set true, the segments will not be skipped.  (optional)
+     * @return ApiResponse&lt;HelloResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<HelloResponse> rebuildnowGetWithHttpInfo(String graphName, Integer threadnum, String vertextype, Integer segid, String path, Boolean force) throws ApiException {
+        com.squareup.okhttp.Call call = rebuildnowGetValidateBeforeCall(graphName, threadnum, vertextype, segid, path, force, null, null);
+        Type localVarReturnType = new TypeToken<HelloResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Rebuild graph engine (asynchronously)
+     * In TigerGraph, when new data is being loaded into the graph (such as new vertices or edges),  data is first stored in memory before it is saved to disk permanently.  TigerGraph runs a rebuild of the Graph Processing Engine (GPE) to commit the data in memory to disk  every 30 seconds, but you can also call this endpoint to trigger a rebuild immediately. 
+     * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
+     * @param threadnum Number of threads used to execute the rebuild. If not specified, the number specified in the .tg.cfg file  (\&quot;RebuildThreadNumber\&quot;) in the home directory of the server on which TigerGraph  is running will be used; it is set to 3 by default.  The maximum value for this parameter is the number of vCPUs per node in your distributed system.  If you are running a single-node server, the maximum is the number of vCPUs on that node.  You can run lscpu in the command line of your Linux server and look in the CPU(s)  column to view the number of vCPUs.  (optional)
+     * @param vertextype Vertex type to perform the rebuild for. If not provided, the rebuild will be run for all the vertex types.  (optional)
+     * @param segid Segment ID of the segments to rebuild. If not provided, all segments will be rebuilt.  In general, it is recommended not to provide this parameter and rebuild all segments.  (optional)
+     * @param path Path to save the summary of the rebuild to. If not provided, the default path is /tmp/rebuildnow  (optional)
+     * @param force Boolean value that indicates whether to perform rebuilds for segments for which there are no records of new data.  Normally, a rebuild would skip such segments, but if force is set true, the segments will not be skipped.  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call rebuildnowGetAsync(String graphName, Integer threadnum, String vertextype, Integer segid, String path, Boolean force, final ApiCallback<HelloResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = rebuildnowGetValidateBeforeCall(graphName, threadnum, vertextype, segid, path, force, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<HelloResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for rebuildnowPost
+     * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
+     * @param threadnum Number of threads used to execute the rebuild. If not specified, the number specified in the .tg.cfg file  (\&quot;RebuildThreadNumber\&quot;) in the home directory of the server on which TigerGraph  is running will be used; it is set to 3 by default.  The maximum value for this parameter is the number of vCPUs per node in your distributed system.  If you are running a single-node server, the maximum is the number of vCPUs on that node.  You can run lscpu in the command line of your Linux server and look in the CPU(s)  column to view the number of vCPUs.  (optional)
+     * @param vertextype Vertex type to perform the rebuild for. If not provided, the rebuild will be run for all the vertex types.  (optional)
+     * @param segid Segment ID of the segments to rebuild. If not provided, all segments will be rebuilt.  In general, it is recommended not to provide this parameter and rebuild all segments.  (optional)
+     * @param path Path to save the summary of the rebuild to. If not provided, the default path is /tmp/rebuildnow  (optional)
+     * @param force Boolean value that indicates whether to perform rebuilds for segments for which there are no records of new data.  Normally, a rebuild would skip such segments, but if force is set true, the segments will not be skipped.  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call rebuildnowPostCall(String graphName, Integer threadnum, String vertextype, Integer segid, String path, Boolean force, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/rebuildnow/{graph_name}"
+            .replaceAll("\\{" + "graph_name" + "\\}", apiClient.escapeString(graphName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (threadnum != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("threadnum", threadnum));
+        if (vertextype != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("vertextype", vertextype));
+        if (segid != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("segid", segid));
+        if (path != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("path", path));
+        if (force != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("force", force));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call rebuildnowPostValidateBeforeCall(String graphName, Integer threadnum, String vertextype, Integer segid, String path, Boolean force, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'graphName' is set
+        if (graphName == null) {
+            throw new ApiException("Missing the required parameter 'graphName' when calling rebuildnowPost(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = rebuildnowPostCall(graphName, threadnum, vertextype, segid, path, force, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Rebuild graph engine
+     * In TigerGraph, when new data is being loaded into the graph (such as new vertices or edges),  data is first stored in memory before it is saved to disk permanently.  TigerGraph runs a rebuild of the Graph Processing Engine (GPE) to commit the data in memory to disk  every 30 seconds, but you can also call this endpoint to trigger a rebuild immediately. 
+     * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
+     * @param threadnum Number of threads used to execute the rebuild. If not specified, the number specified in the .tg.cfg file  (\&quot;RebuildThreadNumber\&quot;) in the home directory of the server on which TigerGraph  is running will be used; it is set to 3 by default.  The maximum value for this parameter is the number of vCPUs per node in your distributed system.  If you are running a single-node server, the maximum is the number of vCPUs on that node.  You can run lscpu in the command line of your Linux server and look in the CPU(s)  column to view the number of vCPUs.  (optional)
+     * @param vertextype Vertex type to perform the rebuild for. If not provided, the rebuild will be run for all the vertex types.  (optional)
+     * @param segid Segment ID of the segments to rebuild. If not provided, all segments will be rebuilt.  In general, it is recommended not to provide this parameter and rebuild all segments.  (optional)
+     * @param path Path to save the summary of the rebuild to. If not provided, the default path is /tmp/rebuildnow  (optional)
+     * @param force Boolean value that indicates whether to perform rebuilds for segments for which there are no records of new data.  Normally, a rebuild would skip such segments, but if force is set true, the segments will not be skipped.  (optional)
+     * @return HelloResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public HelloResponse rebuildnowPost(String graphName, Integer threadnum, String vertextype, Integer segid, String path, Boolean force) throws ApiException {
+        ApiResponse<HelloResponse> resp = rebuildnowPostWithHttpInfo(graphName, threadnum, vertextype, segid, path, force);
+        return resp.getData();
+    }
+
+    /**
+     * Rebuild graph engine
+     * In TigerGraph, when new data is being loaded into the graph (such as new vertices or edges),  data is first stored in memory before it is saved to disk permanently.  TigerGraph runs a rebuild of the Graph Processing Engine (GPE) to commit the data in memory to disk  every 30 seconds, but you can also call this endpoint to trigger a rebuild immediately. 
+     * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
+     * @param threadnum Number of threads used to execute the rebuild. If not specified, the number specified in the .tg.cfg file  (\&quot;RebuildThreadNumber\&quot;) in the home directory of the server on which TigerGraph  is running will be used; it is set to 3 by default.  The maximum value for this parameter is the number of vCPUs per node in your distributed system.  If you are running a single-node server, the maximum is the number of vCPUs on that node.  You can run lscpu in the command line of your Linux server and look in the CPU(s)  column to view the number of vCPUs.  (optional)
+     * @param vertextype Vertex type to perform the rebuild for. If not provided, the rebuild will be run for all the vertex types.  (optional)
+     * @param segid Segment ID of the segments to rebuild. If not provided, all segments will be rebuilt.  In general, it is recommended not to provide this parameter and rebuild all segments.  (optional)
+     * @param path Path to save the summary of the rebuild to. If not provided, the default path is /tmp/rebuildnow  (optional)
+     * @param force Boolean value that indicates whether to perform rebuilds for segments for which there are no records of new data.  Normally, a rebuild would skip such segments, but if force is set true, the segments will not be skipped.  (optional)
+     * @return ApiResponse&lt;HelloResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<HelloResponse> rebuildnowPostWithHttpInfo(String graphName, Integer threadnum, String vertextype, Integer segid, String path, Boolean force) throws ApiException {
+        com.squareup.okhttp.Call call = rebuildnowPostValidateBeforeCall(graphName, threadnum, vertextype, segid, path, force, null, null);
+        Type localVarReturnType = new TypeToken<HelloResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Rebuild graph engine (asynchronously)
+     * In TigerGraph, when new data is being loaded into the graph (such as new vertices or edges),  data is first stored in memory before it is saved to disk permanently.  TigerGraph runs a rebuild of the Graph Processing Engine (GPE) to commit the data in memory to disk  every 30 seconds, but you can also call this endpoint to trigger a rebuild immediately. 
+     * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
+     * @param threadnum Number of threads used to execute the rebuild. If not specified, the number specified in the .tg.cfg file  (\&quot;RebuildThreadNumber\&quot;) in the home directory of the server on which TigerGraph  is running will be used; it is set to 3 by default.  The maximum value for this parameter is the number of vCPUs per node in your distributed system.  If you are running a single-node server, the maximum is the number of vCPUs on that node.  You can run lscpu in the command line of your Linux server and look in the CPU(s)  column to view the number of vCPUs.  (optional)
+     * @param vertextype Vertex type to perform the rebuild for. If not provided, the rebuild will be run for all the vertex types.  (optional)
+     * @param segid Segment ID of the segments to rebuild. If not provided, all segments will be rebuilt.  In general, it is recommended not to provide this parameter and rebuild all segments.  (optional)
+     * @param path Path to save the summary of the rebuild to. If not provided, the default path is /tmp/rebuildnow  (optional)
+     * @param force Boolean value that indicates whether to perform rebuilds for segments for which there are no records of new data.  Normally, a rebuild would skip such segments, but if force is set true, the segments will not be skipped.  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call rebuildnowPostAsync(String graphName, Integer threadnum, String vertextype, Integer segid, String path, Boolean force, final ApiCallback<HelloResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = rebuildnowPostValidateBeforeCall(graphName, threadnum, vertextype, segid, path, force, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<HelloResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for statistics
      * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
      * @param seconds Duration of statistics collection (1 ≤ n ≤ 60). (required)

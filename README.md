@@ -2,7 +2,6 @@
 
 TigerGraph REST++ API
 - API version: 1.0.0
-  - Build date: 2021-12-24T13:47:25.509+01:00[Europe/Warsaw]
 
 Title
 
@@ -594,52 +593,6 @@ public class DefaultApiExample {
         DefaultApi apiInstance = new DefaultApi();
         String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
         try {
-            HelloResponse result = apiInstance.rebuildnowGraphNameGet(graphName);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#rebuildnowGraphNameGet");
-            e.printStackTrace();
-        }
-    }
-}
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.auth.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        
-        DefaultApi apiInstance = new DefaultApi();
-        String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-        try {
-            HelloResponse result = apiInstance.rebuildnowGraphNamePost(graphName);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#rebuildnowGraphNamePost");
-            e.printStackTrace();
-        }
-    }
-}
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.auth.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        
-        DefaultApi apiInstance = new DefaultApi();
-        String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-        try {
             HelloResponse result = apiInstance.restpploaderGraphNamePost(graphName);
             System.out.println(result);
         } catch (ApiException e) {
@@ -792,8 +745,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**graphVerticesVertexTypeVertexIdGet**](docs/DefaultApi.md#graphVerticesVertexTypeVertexIdGet) | **GET** /graph/vertices/{vertex_type}/{vertex_id} | TBD
 *DefaultApi* | [**queryResultRequestidGet**](docs/DefaultApi.md#queryResultRequestidGet) | **GET** /query_result/{requestid} | TBD
 *DefaultApi* | [**queryStatusGraphNameGet**](docs/DefaultApi.md#queryStatusGraphNameGet) | **GET** /query_status/{graph_name} | TBD
-*DefaultApi* | [**rebuildnowGraphNameGet**](docs/DefaultApi.md#rebuildnowGraphNameGet) | **GET** /rebuildnow/{graph_name} | TBD
-*DefaultApi* | [**rebuildnowGraphNamePost**](docs/DefaultApi.md#rebuildnowGraphNamePost) | **POST** /rebuildnow/{graph_name} | TBD
 *DefaultApi* | [**restpploaderGraphNamePost**](docs/DefaultApi.md#restpploaderGraphNamePost) | **POST** /restpploader/{graph_name} | TBD
 *DefaultApi* | [**shortestpathGraphNameGet**](docs/DefaultApi.md#shortestpathGraphNameGet) | **GET** /shortestpath/{graph_name} | TBD
 *DefaultApi* | [**shortestpathGraphNamePost**](docs/DefaultApi.md#shortestpathGraphNamePost) | **POST** /shortestpath/{graph_name} | TBD
@@ -803,6 +754,8 @@ Class | Method | HTTP request | Description
 *DiagnosticsApi* | [**echoGet**](docs/DiagnosticsApi.md#echoGet) | **GET** /echo/{graph_name} | Echo
 *DiagnosticsApi* | [**echoPost**](docs/DiagnosticsApi.md#echoPost) | **POST** /echo/{graph_name} | Echo
 *DiagnosticsApi* | [**endpoints**](docs/DiagnosticsApi.md#endpoints) | **GET** /endpoints/{graph_name} | List all endpoints
+*DiagnosticsApi* | [**rebuildnowGet**](docs/DiagnosticsApi.md#rebuildnowGet) | **GET** /rebuildnow/{graph_name} | Rebuild graph engine
+*DiagnosticsApi* | [**rebuildnowPost**](docs/DiagnosticsApi.md#rebuildnowPost) | **POST** /rebuildnow/{graph_name} | Rebuild graph engine
 *DiagnosticsApi* | [**statistics**](docs/DiagnosticsApi.md#statistics) | **GET** /statistics/{graph_name} | Show query performance
 *DiagnosticsApi* | [**version**](docs/DiagnosticsApi.md#version) | **GET** /version/{graph_name} | Show component versions
 *QueryApi* | [**runInstalledQueryGet**](docs/QueryApi.md#runInstalledQueryGet) | **GET** /query/{graph_name}/{query_name} | Run an installed query
