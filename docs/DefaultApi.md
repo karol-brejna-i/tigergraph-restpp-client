@@ -12,9 +12,6 @@ Method | HTTP request | Description
 [**ddlGraphNamePost**](DefaultApi.md#ddlGraphNamePost) | **POST** /ddl/{graph_name} | TBD
 [**deletedVertexCheckGraphNameGet**](DefaultApi.md#deletedVertexCheckGraphNameGet) | **GET** /deleted_vertex_check/{graph_name} | TBD
 [**deletedVertexCheckGraphNamePost**](DefaultApi.md#deletedVertexCheckGraphNamePost) | **POST** /deleted_vertex_check/{graph_name} | TBD
-[**echoGraphNameGet**](DefaultApi.md#echoGraphNameGet) | **GET** /echo/{graph_name} | TBD
-[**echoGraphNamePost**](DefaultApi.md#echoGraphNamePost) | **POST** /echo/{graph_name} | TBD
-[**endpointsGraphNameGet**](DefaultApi.md#endpointsGraphNameGet) | **GET** /endpoints/{graph_name} | TBD
 [**graphDeleteByTypeVerticesVertexTypeDelete**](DefaultApi.md#graphDeleteByTypeVerticesVertexTypeDelete) | **DELETE** /graph/delete_by_type/vertices/{vertex_type}/ | TBD
 [**graphEdgesSourceVertexTypeSourceVertexIdEdgeTypeTargetVertexTypeTargetVertexIdDelete**](DefaultApi.md#graphEdgesSourceVertexTypeSourceVertexIdEdgeTypeTargetVertexTypeTargetVertexIdDelete) | **DELETE** /graph/edges/{source_vertex_type}/{source_vertex_id}/{edge_type}/{target_vertex_type}/{target_vertex_id} | TBD
 [**graphEdgesSourceVertexTypeSourceVertexIdEdgeTypeTargetVertexTypeTargetVertexIdGet**](DefaultApi.md#graphEdgesSourceVertexTypeSourceVertexIdEdgeTypeTargetVertexTypeTargetVertexIdGet) | **GET** /graph/edges/{source_vertex_type}/{source_vertex_id}/{edge_type}/{target_vertex_type}/{target_vertex_id} | TBD
@@ -36,8 +33,6 @@ Method | HTTP request | Description
 [**showlicenseinfoGraphNameGet**](DefaultApi.md#showlicenseinfoGraphNameGet) | **GET** /showlicenseinfo/{graph_name} | TBD
 [**showprocesslistGraphNameGet**](DefaultApi.md#showprocesslistGraphNameGet) | **GET** /showprocesslist/{graph_name} | TBD
 [**showprocesslistGraphNamePost**](DefaultApi.md#showprocesslistGraphNamePost) | **POST** /showprocesslist/{graph_name} | TBD
-[**statisticsGraphNameGet**](DefaultApi.md#statisticsGraphNameGet) | **GET** /statistics/{graph_name} | TBD
-[**versionGraphNameGet**](DefaultApi.md#versionGraphNameGet) | **GET** /version/{graph_name} | TBD
 
 <a name="abortqueryGraphNameGet"></a>
 # **abortqueryGraphNameGet**
@@ -360,135 +355,6 @@ try {
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#deletedVertexCheckGraphNamePost");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **graphName** | **String**| The name of the graph (REQUIRED in case of multiple graph in the database). |
-
-### Return type
-
-[**HelloResponse**](HelloResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="echoGraphNameGet"></a>
-# **echoGraphNameGet**
-> HelloResponse echoGraphNameGet(graphName)
-
-TBD
-
-### Example
-```java
-// Import classes:
-//import io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiException;
-//import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-
-DefaultApi apiInstance = new DefaultApi();
-String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-try {
-    HelloResponse result = apiInstance.echoGraphNameGet(graphName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#echoGraphNameGet");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **graphName** | **String**| The name of the graph (REQUIRED in case of multiple graph in the database). |
-
-### Return type
-
-[**HelloResponse**](HelloResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="echoGraphNamePost"></a>
-# **echoGraphNamePost**
-> HelloResponse echoGraphNamePost(graphName)
-
-TBD
-
-### Example
-```java
-// Import classes:
-//import io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiException;
-//import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-
-DefaultApi apiInstance = new DefaultApi();
-String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-try {
-    HelloResponse result = apiInstance.echoGraphNamePost(graphName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#echoGraphNamePost");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **graphName** | **String**| The name of the graph (REQUIRED in case of multiple graph in the database). |
-
-### Return type
-
-[**HelloResponse**](HelloResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="endpointsGraphNameGet"></a>
-# **endpointsGraphNameGet**
-> HelloResponse endpointsGraphNameGet(graphName)
-
-TBD
-
-### Example
-```java
-// Import classes:
-//import io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiException;
-//import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-
-DefaultApi apiInstance = new DefaultApi();
-String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-try {
-    HelloResponse result = apiInstance.endpointsGraphNameGet(graphName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#endpointsGraphNameGet");
     e.printStackTrace();
 }
 ```
@@ -1444,92 +1310,6 @@ try {
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#showprocesslistGraphNamePost");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **graphName** | **String**| The name of the graph (REQUIRED in case of multiple graph in the database). |
-
-### Return type
-
-[**HelloResponse**](HelloResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="statisticsGraphNameGet"></a>
-# **statisticsGraphNameGet**
-> HelloResponse statisticsGraphNameGet(graphName)
-
-TBD
-
-### Example
-```java
-// Import classes:
-//import io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiException;
-//import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-
-DefaultApi apiInstance = new DefaultApi();
-String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-try {
-    HelloResponse result = apiInstance.statisticsGraphNameGet(graphName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#statisticsGraphNameGet");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **graphName** | **String**| The name of the graph (REQUIRED in case of multiple graph in the database). |
-
-### Return type
-
-[**HelloResponse**](HelloResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="versionGraphNameGet"></a>
-# **versionGraphNameGet**
-> HelloResponse versionGraphNameGet(graphName)
-
-TBD
-
-### Example
-```java
-// Import classes:
-//import io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiException;
-//import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-
-DefaultApi apiInstance = new DefaultApi();
-String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-try {
-    HelloResponse result = apiInstance.versionGraphNameGet(graphName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#versionGraphNameGet");
     e.printStackTrace();
 }
 ```

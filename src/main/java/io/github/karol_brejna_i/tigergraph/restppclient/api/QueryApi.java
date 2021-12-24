@@ -176,8 +176,7 @@ public class QueryApi {
      */
     public ApiResponse<QueryResponse> runInstalledQueryGetWithHttpInfo(String graphName, String queryName, BigDecimal GSQL_REPLICA, BigDecimal GSQL_THREAD_LIMIT, BigDecimal GSQL_TIMEOUT, BigDecimal RESPONSE_LIMIT, Boolean readCommitted, Map<String, String> params) throws ApiException {
         com.squareup.okhttp.Call call = runInstalledQueryGetValidateBeforeCall(graphName, queryName, GSQL_REPLICA, GSQL_THREAD_LIMIT, GSQL_TIMEOUT, RESPONSE_LIMIT, readCommitted, params, null, null);
-        Type localVarReturnType = new TypeToken<QueryResponse>() {
-        }.getType();
+        Type localVarReturnType = new TypeToken<QueryResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -219,8 +218,7 @@ public class QueryApi {
         }
 
         com.squareup.okhttp.Call call = runInstalledQueryGetValidateBeforeCall(graphName, queryName, GSQL_REPLICA, GSQL_THREAD_LIMIT, GSQL_TIMEOUT, RESPONSE_LIMIT, readCommitted, params, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<QueryResponse>() {
-        }.getType();
+        Type localVarReturnType = new TypeToken<QueryResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -348,8 +346,7 @@ public class QueryApi {
      */
     public ApiResponse<QueryResponse> runInstalledQueryPostWithHttpInfo(String graphName, String queryName, Object body, BigDecimal GSQL_REPLICA, BigDecimal GSQL_THREAD_LIMIT, BigDecimal GSQL_TIMEOUT, BigDecimal RESPONSE_LIMIT, Boolean readCommitted) throws ApiException {
         com.squareup.okhttp.Call call = runInstalledQueryPostValidateBeforeCall(graphName, queryName, body, GSQL_REPLICA, GSQL_THREAD_LIMIT, GSQL_TIMEOUT, RESPONSE_LIMIT, readCommitted, null, null);
-        Type localVarReturnType = new TypeToken<QueryResponse>() {
-        }.getType();
+        Type localVarReturnType = new TypeToken<QueryResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 

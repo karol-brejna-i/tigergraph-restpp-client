@@ -22,7 +22,7 @@ import java.math.BigDecimal;
  * QueryResponseVersion
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-12-23T12:52:29.063+01:00[Europe/Warsaw]")
+
 public class QueryResponseVersion {
   @SerializedName("edition")
   private String edition = null;

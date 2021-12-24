@@ -2,6 +2,7 @@ package io.github.karol_brejna_i.tigergraph.restppclient;
 
 
 import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
+import io.github.karol_brejna_i.tigergraph.restppclient.api.DiagnosticsApi;
 import io.github.karol_brejna_i.tigergraph.restppclient.api.QueryApi;
 import io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiException;
 import io.github.karol_brejna_i.tigergraph.restppclient.model.HelloResponse;
@@ -33,9 +34,9 @@ public class Example {
         System.out.println(result);
     }
     public static void echo() {
-        DefaultApi apiInstance = new DefaultApi();
+        DiagnosticsApi apiInstance = new DiagnosticsApi();
         try {
-            HelloResponse result = apiInstance.echoGraphNamePost(graphName);
+            HelloResponse result = apiInstance.echoGet(graphName);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#echoGraphNamePost");

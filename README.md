@@ -1,8 +1,8 @@
 # restpp-client
 
-TigerGraph REST++ API Java Client
+TigerGraph REST++ API
 - API version: 1.0.0
-  - Build date: 2021-12-23T12:52:29.063+01:00[Europe/Warsaw]
+  - Build date: 2021-12-24T13:47:25.509+01:00[Europe/Warsaw]
 
 Title
 
@@ -13,7 +13,7 @@ Title
 ## Requirements
 
 Building the API client library requires:
-1. Java 1.8+
+1. Java 1.7+
 2. Maven/Gradle
 
 ## Installation
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>io.github.karol_brejna_i.tigergraph</groupId>
   <artifactId>restpp-client</artifactId>
-  <version>0.0.1</version>
+  <version>1.0.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -251,75 +251,6 @@ public class DefaultApiExample {
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#deletedVertexCheckGraphNamePost");
-            e.printStackTrace();
-        }
-    }
-}
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.auth.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        
-        DefaultApi apiInstance = new DefaultApi();
-        String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-        try {
-            HelloResponse result = apiInstance.echoGraphNameGet(graphName);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#echoGraphNameGet");
-            e.printStackTrace();
-        }
-    }
-}
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.auth.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        
-        DefaultApi apiInstance = new DefaultApi();
-        String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-        try {
-            HelloResponse result = apiInstance.echoGraphNamePost(graphName);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#echoGraphNamePost");
-            e.printStackTrace();
-        }
-    }
-}
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.auth.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        
-        DefaultApi apiInstance = new DefaultApi();
-        String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-        try {
-            HelloResponse result = apiInstance.endpointsGraphNameGet(graphName);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#endpointsGraphNameGet");
             e.printStackTrace();
         }
     }
@@ -832,52 +763,6 @@ public class DefaultApiExample {
         }
     }
 }
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.auth.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        
-        DefaultApi apiInstance = new DefaultApi();
-        String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-        try {
-            HelloResponse result = apiInstance.statisticsGraphNameGet(graphName);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#statisticsGraphNameGet");
-            e.printStackTrace();
-        }
-    }
-}
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.auth.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        
-        DefaultApi apiInstance = new DefaultApi();
-        String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-        try {
-            HelloResponse result = apiInstance.versionGraphNameGet(graphName);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#versionGraphNameGet");
-            e.printStackTrace();
-        }
-    }
-}
 ```
 
 ## Documentation for API Endpoints
@@ -894,9 +779,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**ddlGraphNamePost**](docs/DefaultApi.md#ddlGraphNamePost) | **POST** /ddl/{graph_name} | TBD
 *DefaultApi* | [**deletedVertexCheckGraphNameGet**](docs/DefaultApi.md#deletedVertexCheckGraphNameGet) | **GET** /deleted_vertex_check/{graph_name} | TBD
 *DefaultApi* | [**deletedVertexCheckGraphNamePost**](docs/DefaultApi.md#deletedVertexCheckGraphNamePost) | **POST** /deleted_vertex_check/{graph_name} | TBD
-*DefaultApi* | [**echoGraphNameGet**](docs/DefaultApi.md#echoGraphNameGet) | **GET** /echo/{graph_name} | TBD
-*DefaultApi* | [**echoGraphNamePost**](docs/DefaultApi.md#echoGraphNamePost) | **POST** /echo/{graph_name} | TBD
-*DefaultApi* | [**endpointsGraphNameGet**](docs/DefaultApi.md#endpointsGraphNameGet) | **GET** /endpoints/{graph_name} | TBD
 *DefaultApi* | [**graphDeleteByTypeVerticesVertexTypeDelete**](docs/DefaultApi.md#graphDeleteByTypeVerticesVertexTypeDelete) | **DELETE** /graph/delete_by_type/vertices/{vertex_type}/ | TBD
 *DefaultApi* | [**graphEdgesSourceVertexTypeSourceVertexIdEdgeTypeTargetVertexTypeTargetVertexIdDelete**](docs/DefaultApi.md#graphEdgesSourceVertexTypeSourceVertexIdEdgeTypeTargetVertexTypeTargetVertexIdDelete) | **DELETE** /graph/edges/{source_vertex_type}/{source_vertex_id}/{edge_type}/{target_vertex_type}/{target_vertex_id} | TBD
 *DefaultApi* | [**graphEdgesSourceVertexTypeSourceVertexIdEdgeTypeTargetVertexTypeTargetVertexIdGet**](docs/DefaultApi.md#graphEdgesSourceVertexTypeSourceVertexIdEdgeTypeTargetVertexTypeTargetVertexIdGet) | **GET** /graph/edges/{source_vertex_type}/{source_vertex_id}/{edge_type}/{target_vertex_type}/{target_vertex_id} | TBD
@@ -918,10 +800,11 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**showlicenseinfoGraphNameGet**](docs/DefaultApi.md#showlicenseinfoGraphNameGet) | **GET** /showlicenseinfo/{graph_name} | TBD
 *DefaultApi* | [**showprocesslistGraphNameGet**](docs/DefaultApi.md#showprocesslistGraphNameGet) | **GET** /showprocesslist/{graph_name} | TBD
 *DefaultApi* | [**showprocesslistGraphNamePost**](docs/DefaultApi.md#showprocesslistGraphNamePost) | **POST** /showprocesslist/{graph_name} | TBD
-*DefaultApi* | [**statisticsGraphNameGet**](docs/DefaultApi.md#statisticsGraphNameGet) | **GET** /statistics/{graph_name} | TBD
-*DefaultApi* | [**versionGraphNameGet**](docs/DefaultApi.md#versionGraphNameGet) | **GET** /version/{graph_name} | TBD
-*DoneApi* | [**runInstalledQueryGet**](docs/DoneApi.md#runInstalledQueryGet) | **GET** /query/{graph_name}/{query_name} | Run an installed query
-*DoneApi* | [**runInstalledQueryPost**](docs/DoneApi.md#runInstalledQueryPost) | **POST** /query/{graph_name}/{query_name} | Run an installed query
+*DiagnosticsApi* | [**echoGet**](docs/DiagnosticsApi.md#echoGet) | **GET** /echo/{graph_name} | Echo
+*DiagnosticsApi* | [**echoPost**](docs/DiagnosticsApi.md#echoPost) | **POST** /echo/{graph_name} | Echo
+*DiagnosticsApi* | [**endpoints**](docs/DiagnosticsApi.md#endpoints) | **GET** /endpoints/{graph_name} | List all endpoints
+*DiagnosticsApi* | [**statistics**](docs/DiagnosticsApi.md#statistics) | **GET** /statistics/{graph_name} | Show query performance
+*DiagnosticsApi* | [**version**](docs/DiagnosticsApi.md#version) | **GET** /version/{graph_name} | Show component versions
 *QueryApi* | [**runInstalledQueryGet**](docs/QueryApi.md#runInstalledQueryGet) | **GET** /query/{graph_name}/{query_name} | Run an installed query
 *QueryApi* | [**runInstalledQueryPost**](docs/QueryApi.md#runInstalledQueryPost) | **POST** /query/{graph_name}/{query_name} | Run an installed query
 

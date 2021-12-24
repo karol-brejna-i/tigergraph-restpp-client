@@ -21,7 +21,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * MessageResponse
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-12-23T12:52:29.063+01:00[Europe/Warsaw]")
+
 public class MessageResponse {
   @SerializedName("error")
   private String error = null;
