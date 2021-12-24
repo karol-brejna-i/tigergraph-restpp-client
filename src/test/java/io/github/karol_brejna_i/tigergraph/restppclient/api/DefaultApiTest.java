@@ -160,51 +160,6 @@ public class DefaultApiTest {
      *          if the Api call fails
      */
     @Test
-    public void echoGraphNameGetTest() throws Exception {
-        String graphName = null;
-        HelloResponse response = api.echoGraphNameGet(graphName);
-
-        // TODO: test validations
-    }
-    /**
-     * TBD
-     *
-     * 
-     *
-     * @throws Exception
-     *          if the Api call fails
-     */
-    @Test
-    public void echoGraphNamePostTest() throws Exception {
-        String graphName = null;
-        HelloResponse response = api.echoGraphNamePost(graphName);
-
-        // TODO: test validations
-    }
-    /**
-     * TBD
-     *
-     * 
-     *
-     * @throws Exception
-     *          if the Api call fails
-     */
-    @Test
-    public void endpointsGraphNameGetTest() throws Exception {
-        String graphName = null;
-        HelloResponse response = api.endpointsGraphNameGet(graphName);
-
-        // TODO: test validations
-    }
-    /**
-     * TBD
-     *
-     * 
-     *
-     * @throws Exception
-     *          if the Api call fails
-     */
-    @Test
     public void graphDeleteByTypeVerticesVertexTypeDeleteTest() throws Exception {
         String vertexType = null;
         HelloResponse response = api.graphDeleteByTypeVerticesVertexTypeDelete(vertexType);
@@ -425,36 +380,6 @@ public class DefaultApiTest {
      *          if the Api call fails
      */
     @Test
-    public void rebuildnowGraphNameGetTest() throws Exception {
-        String graphName = null;
-        HelloResponse response = api.rebuildnowGraphNameGet(graphName);
-
-        // TODO: test validations
-    }
-    /**
-     * TBD
-     *
-     * 
-     *
-     * @throws Exception
-     *          if the Api call fails
-     */
-    @Test
-    public void rebuildnowGraphNamePostTest() throws Exception {
-        String graphName = null;
-        HelloResponse response = api.rebuildnowGraphNamePost(graphName);
-
-        // TODO: test validations
-    }
-    /**
-     * TBD
-     *
-     * 
-     *
-     * @throws Exception
-     *          if the Api call fails
-     */
-    @Test
     public void restpploaderGraphNamePostTest() throws Exception {
         String graphName = null;
         HelloResponse response = api.restpploaderGraphNamePost(graphName);
@@ -533,36 +458,6 @@ public class DefaultApiTest {
     public void showprocesslistGraphNamePostTest() throws Exception {
         String graphName = null;
         HelloResponse response = api.showprocesslistGraphNamePost(graphName);
-
-        // TODO: test validations
-    }
-    /**
-     * TBD
-     *
-     * 
-     *
-     * @throws Exception
-     *          if the Api call fails
-     */
-    @Test
-    public void statisticsGraphNameGetTest() throws Exception {
-        String graphName = null;
-        HelloResponse response = api.statisticsGraphNameGet(graphName);
-
-        // TODO: test validations
-    }
-    /**
-     * TBD
-     *
-     * 
-     *
-     * @throws Exception
-     *          if the Api call fails
-     */
-    @Test
-    public void versionGraphNameGetTest() throws Exception {
-        String graphName = null;
-        HelloResponse response = api.versionGraphNameGet(graphName);
 
         // TODO: test validations
     }
