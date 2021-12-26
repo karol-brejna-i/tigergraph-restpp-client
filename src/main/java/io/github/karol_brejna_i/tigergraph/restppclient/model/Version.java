@@ -21,13 +21,12 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-import java.math.BigDecimal;
 /**
- * QueryResponseVersion
+ * Version
  */
 
 
-public class QueryResponseVersion {
+public class Version {
   @SerializedName("edition")
   private String edition = null;
 
@@ -35,9 +34,9 @@ public class QueryResponseVersion {
   private String api = null;
 
   @SerializedName("schema")
-  private BigDecimal schema = null;
+  private Integer schema = null;
 
-  public QueryResponseVersion edition(String edition) {
+  public Version edition(String edition) {
     this.edition = edition;
     return this;
   }
@@ -55,7 +54,7 @@ public class QueryResponseVersion {
     this.edition = edition;
   }
 
-  public QueryResponseVersion api(String api) {
+  public Version api(String api) {
     this.api = api;
     return this;
   }
@@ -73,7 +72,7 @@ public class QueryResponseVersion {
     this.api = api;
   }
 
-  public QueryResponseVersion schema(BigDecimal schema) {
+  public Version schema(Integer schema) {
     this.schema = schema;
     return this;
   }
@@ -83,11 +82,11 @@ public class QueryResponseVersion {
    * @return schema
   **/
   @Schema(description = "")
-  public BigDecimal getSchema() {
+  public Integer getSchema() {
     return schema;
   }
 
-  public void setSchema(BigDecimal schema) {
+  public void setSchema(Integer schema) {
     this.schema = schema;
   }
 
@@ -100,10 +99,10 @@ public class QueryResponseVersion {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    QueryResponseVersion queryResponseVersion = (QueryResponseVersion) o;
-    return Objects.equals(this.edition, queryResponseVersion.edition) &&
-        Objects.equals(this.api, queryResponseVersion.api) &&
-        Objects.equals(this.schema, queryResponseVersion.schema);
+    Version version = (Version) o;
+    return Objects.equals(this.edition, version.edition) &&
+        Objects.equals(this.api, version.api) &&
+        Objects.equals(this.schema, version.schema);
   }
 
   @Override
@@ -115,7 +114,7 @@ public class QueryResponseVersion {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class QueryResponseVersion {\n");
+    sb.append("class Version {\n");
     
     sb.append("    edition: ").append(toIndentedString(edition)).append("\n");
     sb.append("    api: ").append(toIndentedString(api)).append("\n");

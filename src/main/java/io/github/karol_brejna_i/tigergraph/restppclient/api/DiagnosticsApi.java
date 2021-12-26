@@ -761,8 +761,8 @@ public class DiagnosticsApi {
     /**
      * Build call for statistics
      * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
-     * @param seconds Duration of statistics collection (1 ≤ n ≤ 60). (required)
-     * @param segments Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10.  (optional)
+     * @param seconds Duration of statistics collection (1 ≤ n ≤ 60). (optional, default to 10)
+     * @param segments Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10.  (optional, default to 10)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -820,10 +820,6 @@ public class DiagnosticsApi {
         if (graphName == null) {
             throw new ApiException("Missing the required parameter 'graphName' when calling statistics(Async)");
         }
-        // verify the required parameter 'seconds' is set
-        if (seconds == null) {
-            throw new ApiException("Missing the required parameter 'seconds' when calling statistics(Async)");
-        }
         
         com.squareup.okhttp.Call call = statisticsCall(graphName, seconds, segments, progressListener, progressRequestListener);
         return call;
@@ -838,8 +834,8 @@ public class DiagnosticsApi {
      * Show query performance
      * Returns real-time query performance statistics over the given time period, as specified by the **seconds** parameter.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_show_query_performance 
      * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
-     * @param seconds Duration of statistics collection (1 ≤ n ≤ 60). (required)
-     * @param segments Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10.  (optional)
+     * @param seconds Duration of statistics collection (1 ≤ n ≤ 60). (optional, default to 10)
+     * @param segments Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10.  (optional, default to 10)
      * @return StatisticsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -852,8 +848,8 @@ public class DiagnosticsApi {
      * Show query performance
      * Returns real-time query performance statistics over the given time period, as specified by the **seconds** parameter.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_show_query_performance 
      * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
-     * @param seconds Duration of statistics collection (1 ≤ n ≤ 60). (required)
-     * @param segments Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10.  (optional)
+     * @param seconds Duration of statistics collection (1 ≤ n ≤ 60). (optional, default to 10)
+     * @param segments Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10.  (optional, default to 10)
      * @return ApiResponse&lt;StatisticsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -867,8 +863,8 @@ public class DiagnosticsApi {
      * Show query performance (asynchronously)
      * Returns real-time query performance statistics over the given time period, as specified by the **seconds** parameter.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_show_query_performance 
      * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
-     * @param seconds Duration of statistics collection (1 ≤ n ≤ 60). (required)
-     * @param segments Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10.  (optional)
+     * @param seconds Duration of statistics collection (1 ≤ n ≤ 60). (optional, default to 10)
+     * @param segments Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10.  (optional, default to 10)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

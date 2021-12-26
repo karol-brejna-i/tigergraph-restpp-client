@@ -14,7 +14,7 @@ package io.github.karol_brejna_i.tigergraph.restppclient.api;
 
 import com.google.gson.reflect.TypeToken;
 import io.github.karol_brejna_i.tigergraph.restppclient.invoker.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.QueryResponse;
+import io.github.karol_brejna_i.tigergraph.restppclient.model.*;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -95,27 +95,27 @@ public class QueryApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
+        if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
                 public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
                 }
             });
         }
 
-        String[] localVarAuthNames = new String[]{};
+        String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call runInstalledQueryGetValidateBeforeCall(String graphName, String queryName, BigDecimal GSQL_REPLICA, BigDecimal GSQL_THREAD_LIMIT, BigDecimal GSQL_TIMEOUT, BigDecimal RESPONSE_LIMIT, Boolean readCommitted, Map<String, String> params, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'graphName' is set
@@ -129,28 +129,33 @@ public class QueryApi {
 
         // XXX generated code has Map<String, String> in method signature; we need to convert it to list of Pairs...
         // or maybe it would be better to change the signature...
-        List<Pair> nvpList = new ArrayList<>(params.size());
-        for (Map.Entry<String, String> entry : params.entrySet()) {
-            nvpList.add(new Pair(entry.getKey(), entry.getValue()));
+        List<Pair> nvpList = null;
+        if (params != null) {
+            nvpList = new ArrayList<>(params.size());
+            for (Map.Entry<String, String> entry : params.entrySet()) {
+                nvpList.add(new Pair(entry.getKey(), entry.getValue()));
+            }
         }
         com.squareup.okhttp.Call call = runInstalledQueryGetCall(graphName, queryName, GSQL_REPLICA, GSQL_THREAD_LIMIT, GSQL_TIMEOUT, RESPONSE_LIMIT, readCommitted, nvpList, progressListener, progressRequestListener);
         return call;
 
-
+        
+        
+        
+        
     }
 
     /**
      * Run an installed query
-     * Each time a new TigerGraph query is installed, a dynamic endpoint is generated. This new endpoint enables the user to run the new TigerGraph query through HTTP requests and giving the parameters in URL or in a data payload. In the case of a GET request, parameters should be passed in through the query string.
-     *
-     * @param graphName         Graph name (required)
-     * @param queryName         Query name (required)
-     * @param GSQL_REPLICA      f you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error.  (optional)
+     * Each time a new TigerGraph query is installed, a dynamic endpoint is generated. This new endpoint enables the user to run the new TigerGraph query through HTTP requests and giving the parameters in URL or in a data payload. In the case of a GET request, parameters should be passed in through the query string. 
+     * @param graphName Graph name (required)
+     * @param queryName Query name (required)
+     * @param GSQL_REPLICA If you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error.  (optional)
      * @param GSQL_THREAD_LIMIT When running a query through RESTPP, you can specify a limit on the number of threads that the query is allowed to use on each node. The number of threads used by a query means the number of vCPUs used by the query. By default, a query will use all threads that are available on a machine.  (optional)
-     * @param GSQL_TIMEOUT      (optional)
-     * @param RESPONSE_LIMIT    (optional)
-     * @param readCommitted     Boolean value that indicates whether to use read-committed isolation level for the query. At the read committed level, it is guaranteed that any data read is committed at the moment it is read. By default, it is off.  (optional)
-     * @param params            When using a GET request to run an installed query, the query parameters are passed in through the query string of the URL.  (optional)
+     * @param GSQL_TIMEOUT  (optional)
+     * @param RESPONSE_LIMIT  (optional)
+     * @param readCommitted Boolean value that indicates whether to use read-committed isolation level for the query. At the read committed level, it is guaranteed that any data read is committed at the moment it is read. By default, it is off.  (optional)
+     * @param params When using a GET request to run an installed query, the query parameters are passed in through the query string of the URL.  (optional)
      * @return QueryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -161,16 +166,15 @@ public class QueryApi {
 
     /**
      * Run an installed query
-     * Each time a new TigerGraph query is installed, a dynamic endpoint is generated. This new endpoint enables the user to run the new TigerGraph query through HTTP requests and giving the parameters in URL or in a data payload. In the case of a GET request, parameters should be passed in through the query string.
-     *
-     * @param graphName         Graph name (required)
-     * @param queryName         Query name (required)
-     * @param GSQL_REPLICA      f you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error.  (optional)
+     * Each time a new TigerGraph query is installed, a dynamic endpoint is generated. This new endpoint enables the user to run the new TigerGraph query through HTTP requests and giving the parameters in URL or in a data payload. In the case of a GET request, parameters should be passed in through the query string. 
+     * @param graphName Graph name (required)
+     * @param queryName Query name (required)
+     * @param GSQL_REPLICA If you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error.  (optional)
      * @param GSQL_THREAD_LIMIT When running a query through RESTPP, you can specify a limit on the number of threads that the query is allowed to use on each node. The number of threads used by a query means the number of vCPUs used by the query. By default, a query will use all threads that are available on a machine.  (optional)
-     * @param GSQL_TIMEOUT      (optional)
-     * @param RESPONSE_LIMIT    (optional)
-     * @param readCommitted     Boolean value that indicates whether to use read-committed isolation level for the query. At the read committed level, it is guaranteed that any data read is committed at the moment it is read. By default, it is off.  (optional)
-     * @param params            When using a GET request to run an installed query, the query parameters are passed in through the query string of the URL.  (optional)
+     * @param GSQL_TIMEOUT  (optional)
+     * @param RESPONSE_LIMIT  (optional)
+     * @param readCommitted Boolean value that indicates whether to use read-committed isolation level for the query. At the read committed level, it is guaranteed that any data read is committed at the moment it is read. By default, it is off.  (optional)
+     * @param params When using a GET request to run an installed query, the query parameters are passed in through the query string of the URL.  (optional)
      * @return ApiResponse&lt;QueryResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -182,17 +186,16 @@ public class QueryApi {
 
     /**
      * Run an installed query (asynchronously)
-     * Each time a new TigerGraph query is installed, a dynamic endpoint is generated. This new endpoint enables the user to run the new TigerGraph query through HTTP requests and giving the parameters in URL or in a data payload. In the case of a GET request, parameters should be passed in through the query string.
-     *
-     * @param graphName         Graph name (required)
-     * @param queryName         Query name (required)
-     * @param GSQL_REPLICA      f you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error.  (optional)
+     * Each time a new TigerGraph query is installed, a dynamic endpoint is generated. This new endpoint enables the user to run the new TigerGraph query through HTTP requests and giving the parameters in URL or in a data payload. In the case of a GET request, parameters should be passed in through the query string. 
+     * @param graphName Graph name (required)
+     * @param queryName Query name (required)
+     * @param GSQL_REPLICA If you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error.  (optional)
      * @param GSQL_THREAD_LIMIT When running a query through RESTPP, you can specify a limit on the number of threads that the query is allowed to use on each node. The number of threads used by a query means the number of vCPUs used by the query. By default, a query will use all threads that are available on a machine.  (optional)
-     * @param GSQL_TIMEOUT      (optional)
-     * @param RESPONSE_LIMIT    (optional)
-     * @param readCommitted     Boolean value that indicates whether to use read-committed isolation level for the query. At the read committed level, it is guaranteed that any data read is committed at the moment it is read. By default, it is off.  (optional)
-     * @param params            When using a GET request to run an installed query, the query parameters are passed in through the query string of the URL.  (optional)
-     * @param callback          The callback to be executed when the API call finishes
+     * @param GSQL_TIMEOUT  (optional)
+     * @param RESPONSE_LIMIT  (optional)
+     * @param readCommitted Boolean value that indicates whether to use read-committed isolation level for the query. At the read committed level, it is guaranteed that any data read is committed at the moment it is read. By default, it is off.  (optional)
+     * @param params When using a GET request to run an installed query, the query parameters are passed in through the query string of the URL.  (optional)
+     * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
@@ -222,76 +225,74 @@ public class QueryApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-
     /**
      * Build call for runInstalledQueryPost
-     *
-     * @param graphName               Graph name (required)
-     * @param queryName               Query name (required)
-     * @param body                    Optional description in *Markdown* (optional)
-     * @param GSQL_REPLICA            f you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error.  (optional)
-     * @param GSQL_THREAD_LIMIT       When running a query through RESTPP, you can specify a limit on the number of threads that the query is allowed to use on each node. The number of threads used by a query means the number of vCPUs used by the query. By default, a query will use all threads that are available on a machine.  (optional)
-     * @param GSQL_TIMEOUT            (optional)
-     * @param RESPONSE_LIMIT          (optional)
-     * @param readCommitted           Boolean value that indicates whether to use read-committed isolation level for the query. At the read committed level, it is guaranteed that any data read is committed at the moment it is read. By default, it is off.  (optional)
-     * @param progressListener        Progress listener
+     * @param graphName Graph name (required)
+     * @param queryName Query name (required)
+     * @param body Optional description in *Markdown* (optional)
+     * @param GSQL_REPLICA If you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error.  (optional)
+     * @param GSQL_THREAD_LIMIT When running a query through RESTPP, you can specify a limit on the number of threads that the query is allowed to use on each node. The number of threads used by a query means the number of vCPUs used by the query. By default, a query will use all threads that are available on a machine.  (optional)
+     * @param GSQL_TIMEOUT  (optional)
+     * @param RESPONSE_LIMIT  (optional)
+     * @param readCommitted Boolean value that indicates whether to use read-committed isolation level for the query. At the read committed level, it is guaranteed that any data read is committed at the moment it is read. By default, it is off.  (optional)
+     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call runInstalledQueryPostCall(String graphName, String queryName, Object body, BigDecimal GSQL_REPLICA, BigDecimal GSQL_THREAD_LIMIT, BigDecimal GSQL_TIMEOUT, BigDecimal RESPONSE_LIMIT, Boolean readCommitted, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
-
+        
         // create path and map variables
         String localVarPath = "/query/{graph_name}/{query_name}"
-                .replaceAll("\\{" + "graph_name" + "\\}", apiClient.escapeString(graphName.toString()))
-                .replaceAll("\\{" + "query_name" + "\\}", apiClient.escapeString(queryName.toString()));
+            .replaceAll("\\{" + "graph_name" + "\\}", apiClient.escapeString(graphName.toString()))
+            .replaceAll("\\{" + "query_name" + "\\}", apiClient.escapeString(queryName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (readCommitted != null)
-            localVarQueryParams.addAll(apiClient.parameterToPair("read_committed", readCommitted));
+        localVarQueryParams.addAll(apiClient.parameterToPair("read_committed", readCommitted));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (GSQL_REPLICA != null)
-            localVarHeaderParams.put("GSQL-REPLICA", apiClient.parameterToString(GSQL_REPLICA));
+        localVarHeaderParams.put("GSQL-REPLICA", apiClient.parameterToString(GSQL_REPLICA));
         if (GSQL_THREAD_LIMIT != null)
-            localVarHeaderParams.put("GSQL-THREAD-LIMIT", apiClient.parameterToString(GSQL_THREAD_LIMIT));
+        localVarHeaderParams.put("GSQL-THREAD-LIMIT", apiClient.parameterToString(GSQL_THREAD_LIMIT));
         if (GSQL_TIMEOUT != null)
-            localVarHeaderParams.put("GSQL-TIMEOUT", apiClient.parameterToString(GSQL_TIMEOUT));
+        localVarHeaderParams.put("GSQL-TIMEOUT", apiClient.parameterToString(GSQL_TIMEOUT));
         if (RESPONSE_LIMIT != null)
-            localVarHeaderParams.put("RESPONSE-LIMIT", apiClient.parameterToString(RESPONSE_LIMIT));
+        localVarHeaderParams.put("RESPONSE-LIMIT", apiClient.parameterToString(RESPONSE_LIMIT));
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-                "application/json"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-                "application/json"
+            "application/json"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
+        if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
                 public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
                 }
             });
         }
 
-        String[] localVarAuthNames = new String[]{};
+        String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call runInstalledQueryPostValidateBeforeCall(String graphName, String queryName, Object body, BigDecimal GSQL_REPLICA, BigDecimal GSQL_THREAD_LIMIT, BigDecimal GSQL_TIMEOUT, BigDecimal RESPONSE_LIMIT, Boolean readCommitted, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'graphName' is set
@@ -302,25 +303,27 @@ public class QueryApi {
         if (queryName == null) {
             throw new ApiException("Missing the required parameter 'queryName' when calling runInstalledQueryPost(Async)");
         }
-
+        
         com.squareup.okhttp.Call call = runInstalledQueryPostCall(graphName, queryName, body, GSQL_REPLICA, GSQL_THREAD_LIMIT, GSQL_TIMEOUT, RESPONSE_LIMIT, readCommitted, progressListener, progressRequestListener);
         return call;
 
-
+        
+        
+        
+        
     }
 
     /**
      * Run an installed query
-     * Each time a new TigerGraph query is installed, a dynamic endpoint is generated. This new endpoint enables the user to run the new TigerGraph query through HTTP requests and giving the parameters in URL or in a data payload.  Users can run queries through a POST request, which allows them to pass query parameters in JSON. This is especially helpful when the query takes complex parameters.
-     *
-     * @param graphName         Graph name (required)
-     * @param queryName         Query name (required)
-     * @param body              Optional description in *Markdown* (optional)
-     * @param GSQL_REPLICA      f you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error.  (optional)
+     * Each time a new TigerGraph query is installed, a dynamic endpoint is generated. This new endpoint enables the user to run the new TigerGraph query through HTTP requests and giving the parameters in URL or in a data payload.  Users can run queries through a POST request, which allows them to pass query parameters in JSON. This is especially helpful when the query takes complex parameters. 
+     * @param graphName Graph name (required)
+     * @param queryName Query name (required)
+     * @param body Optional description in *Markdown* (optional)
+     * @param GSQL_REPLICA If you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error.  (optional)
      * @param GSQL_THREAD_LIMIT When running a query through RESTPP, you can specify a limit on the number of threads that the query is allowed to use on each node. The number of threads used by a query means the number of vCPUs used by the query. By default, a query will use all threads that are available on a machine.  (optional)
-     * @param GSQL_TIMEOUT      (optional)
-     * @param RESPONSE_LIMIT    (optional)
-     * @param readCommitted     Boolean value that indicates whether to use read-committed isolation level for the query. At the read committed level, it is guaranteed that any data read is committed at the moment it is read. By default, it is off.  (optional)
+     * @param GSQL_TIMEOUT  (optional)
+     * @param RESPONSE_LIMIT  (optional)
+     * @param readCommitted Boolean value that indicates whether to use read-committed isolation level for the query. At the read committed level, it is guaranteed that any data read is committed at the moment it is read. By default, it is off.  (optional)
      * @return QueryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -331,16 +334,15 @@ public class QueryApi {
 
     /**
      * Run an installed query
-     * Each time a new TigerGraph query is installed, a dynamic endpoint is generated. This new endpoint enables the user to run the new TigerGraph query through HTTP requests and giving the parameters in URL or in a data payload.  Users can run queries through a POST request, which allows them to pass query parameters in JSON. This is especially helpful when the query takes complex parameters.
-     *
-     * @param graphName         Graph name (required)
-     * @param queryName         Query name (required)
-     * @param body              Optional description in *Markdown* (optional)
-     * @param GSQL_REPLICA      f you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error.  (optional)
+     * Each time a new TigerGraph query is installed, a dynamic endpoint is generated. This new endpoint enables the user to run the new TigerGraph query through HTTP requests and giving the parameters in URL or in a data payload.  Users can run queries through a POST request, which allows them to pass query parameters in JSON. This is especially helpful when the query takes complex parameters. 
+     * @param graphName Graph name (required)
+     * @param queryName Query name (required)
+     * @param body Optional description in *Markdown* (optional)
+     * @param GSQL_REPLICA If you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error.  (optional)
      * @param GSQL_THREAD_LIMIT When running a query through RESTPP, you can specify a limit on the number of threads that the query is allowed to use on each node. The number of threads used by a query means the number of vCPUs used by the query. By default, a query will use all threads that are available on a machine.  (optional)
-     * @param GSQL_TIMEOUT      (optional)
-     * @param RESPONSE_LIMIT    (optional)
-     * @param readCommitted     Boolean value that indicates whether to use read-committed isolation level for the query. At the read committed level, it is guaranteed that any data read is committed at the moment it is read. By default, it is off.  (optional)
+     * @param GSQL_TIMEOUT  (optional)
+     * @param RESPONSE_LIMIT  (optional)
+     * @param readCommitted Boolean value that indicates whether to use read-committed isolation level for the query. At the read committed level, it is guaranteed that any data read is committed at the moment it is read. By default, it is off.  (optional)
      * @return ApiResponse&lt;QueryResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -352,17 +354,16 @@ public class QueryApi {
 
     /**
      * Run an installed query (asynchronously)
-     * Each time a new TigerGraph query is installed, a dynamic endpoint is generated. This new endpoint enables the user to run the new TigerGraph query through HTTP requests and giving the parameters in URL or in a data payload.  Users can run queries through a POST request, which allows them to pass query parameters in JSON. This is especially helpful when the query takes complex parameters.
-     *
-     * @param graphName         Graph name (required)
-     * @param queryName         Query name (required)
-     * @param body              Optional description in *Markdown* (optional)
-     * @param GSQL_REPLICA      f you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error.  (optional)
+     * Each time a new TigerGraph query is installed, a dynamic endpoint is generated. This new endpoint enables the user to run the new TigerGraph query through HTTP requests and giving the parameters in URL or in a data payload.  Users can run queries through a POST request, which allows them to pass query parameters in JSON. This is especially helpful when the query takes complex parameters. 
+     * @param graphName Graph name (required)
+     * @param queryName Query name (required)
+     * @param body Optional description in *Markdown* (optional)
+     * @param GSQL_REPLICA If you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error.  (optional)
      * @param GSQL_THREAD_LIMIT When running a query through RESTPP, you can specify a limit on the number of threads that the query is allowed to use on each node. The number of threads used by a query means the number of vCPUs used by the query. By default, a query will use all threads that are available on a machine.  (optional)
-     * @param GSQL_TIMEOUT      (optional)
-     * @param RESPONSE_LIMIT    (optional)
-     * @param readCommitted     Boolean value that indicates whether to use read-committed isolation level for the query. At the read committed level, it is guaranteed that any data read is committed at the moment it is read. By default, it is off.  (optional)
-     * @param callback          The callback to be executed when the API call finishes
+     * @param GSQL_TIMEOUT  (optional)
+     * @param RESPONSE_LIMIT  (optional)
+     * @param readCommitted Boolean value that indicates whether to use read-committed isolation level for the query. At the read committed level, it is guaranteed that any data read is committed at the moment it is read. By default, it is off.  (optional)
+     * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
@@ -392,16 +393,263 @@ public class QueryApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
+    /**
+     * Build call for showProcessListGet
+     * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call showProcessListGetCall(String graphName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/showprocesslist/{graph_name}"
+            .replaceAll("\\{" + "graph_name" + "\\}", apiClient.escapeString(graphName.toString()));
 
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call showProcessListGetValidateBeforeCall(String graphName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'graphName' is set
+        if (graphName == null) {
+            throw new ApiException("Missing the required parameter 'graphName' when calling showProcessListGet(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = showProcessListGetCall(graphName, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * List running queries
+     * This endpoint reports statistics of running queries of a graph: the query’s request ID, start time, expiration time, and the REST endpoint’s URL  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_list_running_queries 
+     * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
+     * @return ProcessListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ProcessListResponse showProcessListGet(String graphName) throws ApiException {
+        ApiResponse<ProcessListResponse> resp = showProcessListGetWithHttpInfo(graphName);
+        return resp.getData();
+    }
+
+    /**
+     * List running queries
+     * This endpoint reports statistics of running queries of a graph: the query’s request ID, start time, expiration time, and the REST endpoint’s URL  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_list_running_queries 
+     * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
+     * @return ApiResponse&lt;ProcessListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ProcessListResponse> showProcessListGetWithHttpInfo(String graphName) throws ApiException {
+        com.squareup.okhttp.Call call = showProcessListGetValidateBeforeCall(graphName, null, null);
+        Type localVarReturnType = new TypeToken<ProcessListResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * List running queries (asynchronously)
+     * This endpoint reports statistics of running queries of a graph: the query’s request ID, start time, expiration time, and the REST endpoint’s URL  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_list_running_queries 
+     * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call showProcessListGetAsync(String graphName, final ApiCallback<ProcessListResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = showProcessListGetValidateBeforeCall(graphName, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ProcessListResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for showProcessListPost
+     * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call showProcessListPostCall(String graphName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/showprocesslist/{graph_name}"
+            .replaceAll("\\{" + "graph_name" + "\\}", apiClient.escapeString(graphName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call showProcessListPostValidateBeforeCall(String graphName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'graphName' is set
+        if (graphName == null) {
+            throw new ApiException("Missing the required parameter 'graphName' when calling showProcessListPost(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = showProcessListPostCall(graphName, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * listed in /endpoints results, but not mentioned in the docs...
+     * 
+     * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
+     * @return ProcessListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ProcessListResponse showProcessListPost(String graphName) throws ApiException {
+        ApiResponse<ProcessListResponse> resp = showProcessListPostWithHttpInfo(graphName);
+        return resp.getData();
+    }
+
+    /**
+     * listed in /endpoints results, but not mentioned in the docs...
+     * 
+     * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
+     * @return ApiResponse&lt;ProcessListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ProcessListResponse> showProcessListPostWithHttpInfo(String graphName) throws ApiException {
+        com.squareup.okhttp.Call call = showProcessListPostValidateBeforeCall(graphName, null, null);
+        Type localVarReturnType = new TypeToken<ProcessListResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * listed in /endpoints results, but not mentioned in the docs... (asynchronously)
+     * 
+     * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call showProcessListPostAsync(String graphName, final ApiCallback<ProcessListResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = showProcessListPostValidateBeforeCall(graphName, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ProcessListResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
     public QueryResponse runInstalledQueryGet(String graphName, String queryName) throws ApiException {
         return this.runInstalledQueryGet(graphName, queryName, null, null, null, null, null, null);
     }
-
     public QueryResponse runInstalledQueryPost(String graphName, String queryName, HashMap<String, Object> body) throws ApiException {
         return this.runInstalledQueryPost(graphName, queryName, body,
                 null, null, null, null, null);
     }
-
     public QueryResponse runInstalledQueryGet(String graphName, String queryName, HashMap<String, String> params) throws ApiException {
         return this.runInstalledQueryGet(graphName, queryName,
                 null, null, null, null, null,

@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**runInstalledQueryGet**](QueryApi.md#runInstalledQueryGet) | **GET** /query/{graph_name}/{query_name} | Run an installed query
 [**runInstalledQueryPost**](QueryApi.md#runInstalledQueryPost) | **POST** /query/{graph_name}/{query_name} | Run an installed query
+[**showProcessListGet**](QueryApi.md#showProcessListGet) | **GET** /showprocesslist/{graph_name} | List running queries
+[**showProcessListPost**](QueryApi.md#showProcessListPost) | **POST** /showprocesslist/{graph_name} | listed in /endpoints results, but not mentioned in the docs...
 
 <a name="runInstalledQueryGet"></a>
 # **runInstalledQueryGet**
@@ -25,7 +27,7 @@ Each time a new TigerGraph query is installed, a dynamic endpoint is generated. 
 QueryApi apiInstance = new QueryApi();
 String graphName = "graphName_example"; // String | Graph name
 String queryName = "queryName_example"; // String | Query name
-BigDecimal GSQL_REPLICA = new BigDecimal(); // BigDecimal | f you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error. 
+BigDecimal GSQL_REPLICA = new BigDecimal(); // BigDecimal | If you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error. 
 BigDecimal GSQL_THREAD_LIMIT = new BigDecimal(); // BigDecimal | When running a query through RESTPP, you can specify a limit on the number of threads that the query is allowed to use on each node. The number of threads used by a query means the number of vCPUs used by the query. By default, a query will use all threads that are available on a machine. 
 BigDecimal GSQL_TIMEOUT = new BigDecimal(); // BigDecimal | 
 BigDecimal RESPONSE_LIMIT = new BigDecimal(); // BigDecimal | 
@@ -46,7 +48,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **graphName** | **String**| Graph name |
  **queryName** | **String**| Query name |
- **GSQL_REPLICA** | **BigDecimal**| f you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error.  | [optional]
+ **GSQL_REPLICA** | **BigDecimal**| If you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error.  | [optional]
  **GSQL_THREAD_LIMIT** | **BigDecimal**| When running a query through RESTPP, you can specify a limit on the number of threads that the query is allowed to use on each node. The number of threads used by a query means the number of vCPUs used by the query. By default, a query will use all threads that are available on a machine.  | [optional]
  **GSQL_TIMEOUT** | **BigDecimal**|  | [optional]
  **RESPONSE_LIMIT** | **BigDecimal**|  | [optional]
@@ -85,7 +87,7 @@ QueryApi apiInstance = new QueryApi();
 String graphName = "graphName_example"; // String | Graph name
 String queryName = "queryName_example"; // String | Query name
 Object body = null; // Object | Optional description in *Markdown*
-BigDecimal GSQL_REPLICA = new BigDecimal(); // BigDecimal | f you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error. 
+BigDecimal GSQL_REPLICA = new BigDecimal(); // BigDecimal | If you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error. 
 BigDecimal GSQL_THREAD_LIMIT = new BigDecimal(); // BigDecimal | When running a query through RESTPP, you can specify a limit on the number of threads that the query is allowed to use on each node. The number of threads used by a query means the number of vCPUs used by the query. By default, a query will use all threads that are available on a machine. 
 BigDecimal GSQL_TIMEOUT = new BigDecimal(); // BigDecimal | 
 BigDecimal RESPONSE_LIMIT = new BigDecimal(); // BigDecimal | 
@@ -106,7 +108,7 @@ Name | Type | Description  | Notes
  **graphName** | **String**| Graph name |
  **queryName** | **String**| Query name |
  **body** | [**Object**](Object.md)| Optional description in *Markdown* | [optional]
- **GSQL_REPLICA** | **BigDecimal**| f you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error.  | [optional]
+ **GSQL_REPLICA** | **BigDecimal**| If you have a TigerGraph HA cluster, you can specify a query to run on a particular replica with the HTTP header GSQL-REPLICA. The value of the header needs to be an integer within the range one to the replication factor of the cluster. If you supply a invalid value for the header, the request will return an error.  | [optional]
  **GSQL_THREAD_LIMIT** | **BigDecimal**| When running a query through RESTPP, you can specify a limit on the number of threads that the query is allowed to use on each node. The number of threads used by a query means the number of vCPUs used by the query. By default, a query will use all threads that are available on a machine.  | [optional]
  **GSQL_TIMEOUT** | **BigDecimal**|  | [optional]
  **RESPONSE_LIMIT** | **BigDecimal**|  | [optional]
@@ -123,5 +125,93 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="showProcessListGet"></a>
+# **showProcessListGet**
+> ProcessListResponse showProcessListGet(graphName)
+
+List running queries
+
+This endpoint reports statistics of running queries of a graph: the query’s request ID, start time, expiration time, and the REST endpoint’s URL  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_list_running_queries 
+
+### Example
+```java
+// Import classes:
+//import io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiException;
+//import io.github.karol_brejna_i.tigergraph.restppclient.api.QueryApi;
+
+
+QueryApi apiInstance = new QueryApi();
+String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
+try {
+    ProcessListResponse result = apiInstance.showProcessListGet(graphName);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling QueryApi#showProcessListGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **graphName** | **String**| The name of the graph (REQUIRED in case of multiple graph in the database). |
+
+### Return type
+
+[**ProcessListResponse**](ProcessListResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="showProcessListPost"></a>
+# **showProcessListPost**
+> ProcessListResponse showProcessListPost(graphName)
+
+listed in /endpoints results, but not mentioned in the docs...
+
+### Example
+```java
+// Import classes:
+//import io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiException;
+//import io.github.karol_brejna_i.tigergraph.restppclient.api.QueryApi;
+
+
+QueryApi apiInstance = new QueryApi();
+String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
+try {
+    ProcessListResponse result = apiInstance.showProcessListPost(graphName);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling QueryApi#showProcessListPost");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **graphName** | **String**| The name of the graph (REQUIRED in case of multiple graph in the database). |
+
+### Return type
+
+[**ProcessListResponse**](ProcessListResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

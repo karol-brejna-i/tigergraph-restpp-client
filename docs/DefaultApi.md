@@ -29,8 +29,6 @@ Method | HTTP request | Description
 [**shortestpathGraphNameGet**](DefaultApi.md#shortestpathGraphNameGet) | **GET** /shortestpath/{graph_name} | TBD
 [**shortestpathGraphNamePost**](DefaultApi.md#shortestpathGraphNamePost) | **POST** /shortestpath/{graph_name} | TBD
 [**showlicenseinfoGraphNameGet**](DefaultApi.md#showlicenseinfoGraphNameGet) | **GET** /showlicenseinfo/{graph_name} | TBD
-[**showprocesslistGraphNameGet**](DefaultApi.md#showprocesslistGraphNameGet) | **GET** /showprocesslist/{graph_name} | TBD
-[**showprocesslistGraphNamePost**](DefaultApi.md#showprocesslistGraphNamePost) | **POST** /showprocesslist/{graph_name} | TBD
 
 <a name="abortqueryGraphNameGet"></a>
 # **abortqueryGraphNameGet**
@@ -1136,92 +1134,6 @@ try {
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#showlicenseinfoGraphNameGet");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **graphName** | **String**| The name of the graph (REQUIRED in case of multiple graph in the database). |
-
-### Return type
-
-[**HelloResponse**](HelloResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="showprocesslistGraphNameGet"></a>
-# **showprocesslistGraphNameGet**
-> HelloResponse showprocesslistGraphNameGet(graphName)
-
-TBD
-
-### Example
-```java
-// Import classes:
-//import io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiException;
-//import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-
-DefaultApi apiInstance = new DefaultApi();
-String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-try {
-    HelloResponse result = apiInstance.showprocesslistGraphNameGet(graphName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#showprocesslistGraphNameGet");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **graphName** | **String**| The name of the graph (REQUIRED in case of multiple graph in the database). |
-
-### Return type
-
-[**HelloResponse**](HelloResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="showprocesslistGraphNamePost"></a>
-# **showprocesslistGraphNamePost**
-> HelloResponse showprocesslistGraphNamePost(graphName)
-
-TBD
-
-### Example
-```java
-// Import classes:
-//import io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiException;
-//import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-
-DefaultApi apiInstance = new DefaultApi();
-String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-try {
-    HelloResponse result = apiInstance.showprocesslistGraphNamePost(graphName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#showprocesslistGraphNamePost");
     e.printStackTrace();
 }
 ```
