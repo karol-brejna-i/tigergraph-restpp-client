@@ -19,17 +19,18 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.github.karol_brejna_i.tigergraph.restppclient.model.ProcessInfo;
 import io.github.karol_brejna_i.tigergraph.restppclient.model.Version;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * QueryResponse
+ * ProcessListResponse
  */
 
 
-public class QueryResponse {
+public class ProcessListResponse {
   @SerializedName("version")
   private Version version = null;
 
@@ -40,9 +41,12 @@ public class QueryResponse {
   private String message = null;
 
   @SerializedName("results")
-  private List<Object> results = null;
+  private List<ProcessInfo> results = null;
 
-  public QueryResponse version(Version version) {
+  @SerializedName("code")
+  private String code = null;
+
+  public ProcessListResponse version(Version version) {
     this.version = version;
     return this;
   }
@@ -60,7 +64,7 @@ public class QueryResponse {
     this.version = version;
   }
 
-  public QueryResponse error(Boolean error) {
+  public ProcessListResponse error(Boolean error) {
     this.error = error;
     return this;
   }
@@ -78,7 +82,7 @@ public class QueryResponse {
     this.error = error;
   }
 
-  public QueryResponse message(String message) {
+  public ProcessListResponse message(String message) {
     this.message = message;
     return this;
   }
@@ -96,14 +100,14 @@ public class QueryResponse {
     this.message = message;
   }
 
-  public QueryResponse results(List<Object> results) {
+  public ProcessListResponse results(List<ProcessInfo> results) {
     this.results = results;
     return this;
   }
 
-  public QueryResponse addResultsItem(Object resultsItem) {
+  public ProcessListResponse addResultsItem(ProcessInfo resultsItem) {
     if (this.results == null) {
-      this.results = new ArrayList<Object>();
+      this.results = new ArrayList<ProcessInfo>();
     }
     this.results.add(resultsItem);
     return this;
@@ -114,12 +118,30 @@ public class QueryResponse {
    * @return results
   **/
   @Schema(description = "")
-  public List<Object> getResults() {
+  public List<ProcessInfo> getResults() {
     return results;
   }
 
-  public void setResults(List<Object> results) {
+  public void setResults(List<ProcessInfo> results) {
     this.results = results;
+  }
+
+  public ProcessListResponse code(String code) {
+    this.code = code;
+    return this;
+  }
+
+   /**
+   * Get code
+   * @return code
+  **/
+  @Schema(example = "REST-0000", description = "")
+  public String getCode() {
+    return code;
+  }
+
+  public void setCode(String code) {
+    this.code = code;
   }
 
 
@@ -131,28 +153,30 @@ public class QueryResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    QueryResponse queryResponse = (QueryResponse) o;
-    return Objects.equals(this.version, queryResponse.version) &&
-        Objects.equals(this.error, queryResponse.error) &&
-        Objects.equals(this.message, queryResponse.message) &&
-        Objects.equals(this.results, queryResponse.results);
+    ProcessListResponse processListResponse = (ProcessListResponse) o;
+    return Objects.equals(this.version, processListResponse.version) &&
+        Objects.equals(this.error, processListResponse.error) &&
+        Objects.equals(this.message, processListResponse.message) &&
+        Objects.equals(this.results, processListResponse.results) &&
+        Objects.equals(this.code, processListResponse.code);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(version, error, message, results);
+    return Objects.hash(version, error, message, results, code);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class QueryResponse {\n");
+    sb.append("class ProcessListResponse {\n");
     
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    results: ").append(toIndentedString(results)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("}");
     return sb.toString();
   }

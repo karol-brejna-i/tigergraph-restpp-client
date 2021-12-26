@@ -431,34 +431,4 @@ public class DefaultApiTest {
 
         // TODO: test validations
     }
-    /**
-     * TBD
-     *
-     * 
-     *
-     * @throws Exception
-     *          if the Api call fails
-     */
-    @Test
-    public void showprocesslistGraphNameGetTest() throws Exception {
-        String graphName = null;
-        HelloResponse response = api.showprocesslistGraphNameGet(graphName);
-
-        // TODO: test validations
-    }
-    /**
-     * TBD
-     *
-     * 
-     *
-     * @throws Exception
-     *          if the Api call fails
-     */
-    @Test
-    public void showprocesslistGraphNamePostTest() throws Exception {
-        String graphName = null;
-        HelloResponse response = api.showprocesslistGraphNamePost(graphName);
-
-        // TODO: test validations
-    }
 }

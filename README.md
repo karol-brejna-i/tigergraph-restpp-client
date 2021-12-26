@@ -670,52 +670,6 @@ public class DefaultApiExample {
         }
     }
 }
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.auth.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        
-        DefaultApi apiInstance = new DefaultApi();
-        String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-        try {
-            HelloResponse result = apiInstance.showprocesslistGraphNameGet(graphName);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#showprocesslistGraphNameGet");
-            e.printStackTrace();
-        }
-    }
-}
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.auth.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        
-        DefaultApi apiInstance = new DefaultApi();
-        String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-        try {
-            HelloResponse result = apiInstance.showprocesslistGraphNamePost(graphName);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#showprocesslistGraphNamePost");
-            e.printStackTrace();
-        }
-    }
-}
 ```
 
 ## Documentation for API Endpoints
@@ -749,8 +703,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**shortestpathGraphNameGet**](docs/DefaultApi.md#shortestpathGraphNameGet) | **GET** /shortestpath/{graph_name} | TBD
 *DefaultApi* | [**shortestpathGraphNamePost**](docs/DefaultApi.md#shortestpathGraphNamePost) | **POST** /shortestpath/{graph_name} | TBD
 *DefaultApi* | [**showlicenseinfoGraphNameGet**](docs/DefaultApi.md#showlicenseinfoGraphNameGet) | **GET** /showlicenseinfo/{graph_name} | TBD
-*DefaultApi* | [**showprocesslistGraphNameGet**](docs/DefaultApi.md#showprocesslistGraphNameGet) | **GET** /showprocesslist/{graph_name} | TBD
-*DefaultApi* | [**showprocesslistGraphNamePost**](docs/DefaultApi.md#showprocesslistGraphNamePost) | **POST** /showprocesslist/{graph_name} | TBD
 *DiagnosticsApi* | [**echoGet**](docs/DiagnosticsApi.md#echoGet) | **GET** /echo/{graph_name} | Echo
 *DiagnosticsApi* | [**echoPost**](docs/DiagnosticsApi.md#echoPost) | **POST** /echo/{graph_name} | Echo
 *DiagnosticsApi* | [**endpoints**](docs/DiagnosticsApi.md#endpoints) | **GET** /endpoints/{graph_name} | List all endpoints
@@ -760,15 +712,19 @@ Class | Method | HTTP request | Description
 *DiagnosticsApi* | [**version**](docs/DiagnosticsApi.md#version) | **GET** /version/{graph_name} | Show component versions
 *QueryApi* | [**runInstalledQueryGet**](docs/QueryApi.md#runInstalledQueryGet) | **GET** /query/{graph_name}/{query_name} | Run an installed query
 *QueryApi* | [**runInstalledQueryPost**](docs/QueryApi.md#runInstalledQueryPost) | **POST** /query/{graph_name}/{query_name} | Run an installed query
+*QueryApi* | [**showprocesslistGraphNameGet**](docs/QueryApi.md#showprocesslistGraphNameGet) | **GET** /showprocesslist/{graph_name} | List running queries
+*QueryApi* | [**showprocesslistGraphNamePost**](docs/QueryApi.md#showprocesslistGraphNamePost) | **POST** /showprocesslist/{graph_name} | listed in /endpoints results, but not mentioned in the docs...
 
 ## Documentation for Models
 
+ - [AnyObject](docs/AnyObject.md)
  - [HelloResponse](docs/HelloResponse.md)
  - [MessageResponse](docs/MessageResponse.md)
+ - [ProcessInfo](docs/ProcessInfo.md)
+ - [ProcessListResponse](docs/ProcessListResponse.md)
  - [QueryResponse](docs/QueryResponse.md)
- - [QueryResponseVersion](docs/QueryResponseVersion.md)
  - [StatisticsResponse](docs/StatisticsResponse.md)
- - [StatisticsResponseGETStatisticsgraphName](docs/StatisticsResponseGETStatisticsgraphName.md)
+ - [Version](docs/Version.md)
 
 ## Documentation for Authorization
 

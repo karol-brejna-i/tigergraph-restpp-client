@@ -13,6 +13,8 @@
 package io.github.karol_brejna_i.tigergraph.restppclient.api;
 
 import java.math.BigDecimal;
+import io.github.karol_brejna_i.tigergraph.restppclient.model.ErrorResponse;
+import io.github.karol_brejna_i.tigergraph.restppclient.model.ProcessListResponse;
 import io.github.karol_brejna_i.tigergraph.restppclient.model.QueryResponse;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -73,6 +75,36 @@ public class QueryApiTest {
         BigDecimal RESPONSE_LIMIT = null;
         Boolean readCommitted = null;
         QueryResponse response = api.runInstalledQueryPost(graphName, queryName, body, GSQL_REPLICA, GSQL_THREAD_LIMIT, GSQL_TIMEOUT, RESPONSE_LIMIT, readCommitted);
+
+        // TODO: test validations
+    }
+    /**
+     * List running queries
+     *
+     * This endpoint reports statistics of running queries of a graph: the query’s request ID, start time, expiration time, and the REST endpoint’s URL  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_list_running_queries 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void showProcessListGetTest() throws Exception {
+        String graphName = null;
+        ProcessListResponse response = api.showProcessListGet(graphName);
+
+        // TODO: test validations
+    }
+    /**
+     * listed in /endpoints results, but not mentioned in the docs...
+     *
+     * 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void showProcessListPostTest() throws Exception {
+        String graphName = null;
+        ProcessListResponse response = api.showProcessListPost(graphName);
 
         // TODO: test validations
     }

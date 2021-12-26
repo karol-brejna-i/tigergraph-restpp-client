@@ -835,7 +835,7 @@ public class ApiClient {
      *   when returnType is null.
      * @throws ApiException If fail to execute the call
      */
-    public <T> io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiResponse<T> execute(Call call, Type returnType) throws io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiException {
+    public <T> ApiResponse<T> execute(Call call, Type returnType) throws ApiException {
         try {
             Response response = call.execute();
             T data = handleResponse(response, returnType);
@@ -941,7 +941,7 @@ public class ApiClient {
      * @return The HTTP call
      * @throws ApiException If fail to serialize the request body object
      */
-    public Call buildCall(String path, String method, List<io.github.karol_brejna_i.tigergraph.restppclient.invoker.Pair> queryParams, List<io.github.karol_brejna_i.tigergraph.restppclient.invoker.Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames, io.github.karol_brejna_i.tigergraph.restppclient.invoker.ProgressRequestBody.ProgressRequestListener progressRequestListener) throws io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiException {
+    public Call buildCall(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames, ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Request request = buildRequest(path, method, queryParams, collectionQueryParams, body, headerParams, formParams, authNames, progressRequestListener);
 
         return httpClient.newCall(request);

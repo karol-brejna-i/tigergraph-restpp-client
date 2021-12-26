@@ -26,6 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import io.github.karol_brejna_i.tigergraph.restppclient.model.AnyObject;
 import io.github.karol_brejna_i.tigergraph.restppclient.model.HelloResponse;
 import io.github.karol_brejna_i.tigergraph.restppclient.model.StatisticsResponse;
 
@@ -386,11 +387,11 @@ public class DiagnosticsApi {
      * @param builtin trueEndpoints presinstalled in TigerGraph (like this one). (optional)
      * @param dynamic trueEndpoints generated when installing GSQL queries. (optional)
      * @param _static trueUser installed endpoints. (optional)
-     * @return HelloResponse
+     * @return AnyObject
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public HelloResponse endpoints(String graphName, Boolean builtin, Boolean dynamic, Boolean _static) throws ApiException {
-        ApiResponse<HelloResponse> resp = endpointsWithHttpInfo(graphName, builtin, dynamic, _static);
+    public AnyObject endpoints(String graphName, Boolean builtin, Boolean dynamic, Boolean _static) throws ApiException {
+        ApiResponse<AnyObject> resp = endpointsWithHttpInfo(graphName, builtin, dynamic, _static);
         return resp.getData();
     }
 
@@ -401,12 +402,12 @@ public class DiagnosticsApi {
      * @param builtin trueEndpoints presinstalled in TigerGraph (like this one). (optional)
      * @param dynamic trueEndpoints generated when installing GSQL queries. (optional)
      * @param _static trueUser installed endpoints. (optional)
-     * @return ApiResponse&lt;HelloResponse&gt;
+     * @return ApiResponse&lt;AnyObject&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<HelloResponse> endpointsWithHttpInfo(String graphName, Boolean builtin, Boolean dynamic, Boolean _static) throws ApiException {
+    public ApiResponse<AnyObject> endpointsWithHttpInfo(String graphName, Boolean builtin, Boolean dynamic, Boolean _static) throws ApiException {
         com.squareup.okhttp.Call call = endpointsValidateBeforeCall(graphName, builtin, dynamic, _static, null, null);
-        Type localVarReturnType = new TypeToken<HelloResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<AnyObject>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -421,7 +422,7 @@ public class DiagnosticsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call endpointsAsync(String graphName, Boolean builtin, Boolean dynamic, Boolean _static, final ApiCallback<HelloResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call endpointsAsync(String graphName, Boolean builtin, Boolean dynamic, Boolean _static, final ApiCallback<AnyObject> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -443,7 +444,7 @@ public class DiagnosticsApi {
         }
 
         com.squareup.okhttp.Call call = endpointsValidateBeforeCall(graphName, builtin, dynamic, _static, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<HelloResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<AnyObject>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -760,8 +761,8 @@ public class DiagnosticsApi {
     /**
      * Build call for statistics
      * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
-     * @param seconds Duration of statistics collection (1 ≤ n ≤ 60). (required)
-     * @param segments Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10.  (optional)
+     * @param seconds Duration of statistics collection (1 ≤ n ≤ 60). (optional, default to 10)
+     * @param segments Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10.  (optional, default to 10)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -819,10 +820,6 @@ public class DiagnosticsApi {
         if (graphName == null) {
             throw new ApiException("Missing the required parameter 'graphName' when calling statistics(Async)");
         }
-        // verify the required parameter 'seconds' is set
-        if (seconds == null) {
-            throw new ApiException("Missing the required parameter 'seconds' when calling statistics(Async)");
-        }
         
         com.squareup.okhttp.Call call = statisticsCall(graphName, seconds, segments, progressListener, progressRequestListener);
         return call;
@@ -837,8 +834,8 @@ public class DiagnosticsApi {
      * Show query performance
      * Returns real-time query performance statistics over the given time period, as specified by the **seconds** parameter.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_show_query_performance 
      * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
-     * @param seconds Duration of statistics collection (1 ≤ n ≤ 60). (required)
-     * @param segments Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10.  (optional)
+     * @param seconds Duration of statistics collection (1 ≤ n ≤ 60). (optional, default to 10)
+     * @param segments Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10.  (optional, default to 10)
      * @return StatisticsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -851,8 +848,8 @@ public class DiagnosticsApi {
      * Show query performance
      * Returns real-time query performance statistics over the given time period, as specified by the **seconds** parameter.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_show_query_performance 
      * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
-     * @param seconds Duration of statistics collection (1 ≤ n ≤ 60). (required)
-     * @param segments Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10.  (optional)
+     * @param seconds Duration of statistics collection (1 ≤ n ≤ 60). (optional, default to 10)
+     * @param segments Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10.  (optional, default to 10)
      * @return ApiResponse&lt;StatisticsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -866,8 +863,8 @@ public class DiagnosticsApi {
      * Show query performance (asynchronously)
      * Returns real-time query performance statistics over the given time period, as specified by the **seconds** parameter.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_show_query_performance 
      * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
-     * @param seconds Duration of statistics collection (1 ≤ n ≤ 60). (required)
-     * @param segments Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10.  (optional)
+     * @param seconds Duration of statistics collection (1 ≤ n ≤ 60). (optional, default to 10)
+     * @param segments Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10.  (optional, default to 10)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

@@ -104,7 +104,7 @@ No authorization required
 
 <a name="endpoints"></a>
 # **endpoints**
-> HelloResponse endpoints(graphName, builtin, dynamic, _static)
+> AnyObject endpoints(graphName, builtin, dynamic, _static)
 
 List all endpoints
 
@@ -123,7 +123,7 @@ Boolean builtin = true; // Boolean | trueEndpoints presinstalled in TigerGraph (
 Boolean dynamic = true; // Boolean | trueEndpoints generated when installing GSQL queries.
 Boolean _static = true; // Boolean | trueUser installed endpoints.
 try {
-    HelloResponse result = apiInstance.endpoints(graphName, builtin, dynamic, _static);
+    AnyObject result = apiInstance.endpoints(graphName, builtin, dynamic, _static);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DiagnosticsApi#endpoints");
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**HelloResponse**](HelloResponse.md)
+[**AnyObject**](AnyObject.md)
 
 ### Authorization
 
@@ -280,8 +280,8 @@ Returns real-time query performance statistics over the given time period, as sp
 
 DiagnosticsApi apiInstance = new DiagnosticsApi();
 String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-Integer seconds = 56; // Integer | Duration of statistics collection (1 ≤ n ≤ 60).
-Integer segments = 56; // Integer | Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10. 
+Integer seconds = 10; // Integer | Duration of statistics collection (1 ≤ n ≤ 60).
+Integer segments = 10; // Integer | Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10. 
 try {
     StatisticsResponse result = apiInstance.statistics(graphName, seconds, segments);
     System.out.println(result);
@@ -296,8 +296,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **graphName** | **String**| The name of the graph (REQUIRED in case of multiple graph in the database). |
- **seconds** | **Integer**| Duration of statistics collection (1 ≤ n ≤ 60). |
- **segments** | **Integer**| Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10.  | [optional]
+ **seconds** | **Integer**| Duration of statistics collection (1 ≤ n ≤ 60). | [optional] [default to 10] [enum: ]
+ **segments** | **Integer**| Integer that indicates the number of segments that LatencyPercentile array in the response will be split into. The value for this endpoint must be between 1 and 100 and has a default value of 10.  | [optional] [default to 10] [enum: ]
 
 ### Return type
 

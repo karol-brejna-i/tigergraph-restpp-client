@@ -25,11 +25,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * QueryResponse
+ * ErrorResponse
  */
 
 
-public class QueryResponse {
+public class ErrorResponse {
   @SerializedName("version")
   private Version version = null;
 
@@ -42,7 +42,10 @@ public class QueryResponse {
   @SerializedName("results")
   private List<Object> results = null;
 
-  public QueryResponse version(Version version) {
+  @SerializedName("code")
+  private String code = null;
+
+  public ErrorResponse version(Version version) {
     this.version = version;
     return this;
   }
@@ -51,7 +54,7 @@ public class QueryResponse {
    * Get version
    * @return version
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Version getVersion() {
     return version;
   }
@@ -60,7 +63,7 @@ public class QueryResponse {
     this.version = version;
   }
 
-  public QueryResponse error(Boolean error) {
+  public ErrorResponse error(Boolean error) {
     this.error = error;
     return this;
   }
@@ -69,7 +72,7 @@ public class QueryResponse {
    * Get error
    * @return error
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Boolean isError() {
     return error;
   }
@@ -78,7 +81,7 @@ public class QueryResponse {
     this.error = error;
   }
 
-  public QueryResponse message(String message) {
+  public ErrorResponse message(String message) {
     this.message = message;
     return this;
   }
@@ -87,7 +90,7 @@ public class QueryResponse {
    * Get message
    * @return message
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getMessage() {
     return message;
   }
@@ -96,12 +99,12 @@ public class QueryResponse {
     this.message = message;
   }
 
-  public QueryResponse results(List<Object> results) {
+  public ErrorResponse results(List<Object> results) {
     this.results = results;
     return this;
   }
 
-  public QueryResponse addResultsItem(Object resultsItem) {
+  public ErrorResponse addResultsItem(Object resultsItem) {
     if (this.results == null) {
       this.results = new ArrayList<Object>();
     }
@@ -122,6 +125,24 @@ public class QueryResponse {
     this.results = results;
   }
 
+  public ErrorResponse code(String code) {
+    this.code = code;
+    return this;
+  }
+
+   /**
+   * Get code
+   * @return code
+  **/
+  @Schema(example = "REST-1000", required = true, description = "")
+  public String getCode() {
+    return code;
+  }
+
+  public void setCode(String code) {
+    this.code = code;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -131,28 +152,30 @@ public class QueryResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    QueryResponse queryResponse = (QueryResponse) o;
-    return Objects.equals(this.version, queryResponse.version) &&
-        Objects.equals(this.error, queryResponse.error) &&
-        Objects.equals(this.message, queryResponse.message) &&
-        Objects.equals(this.results, queryResponse.results);
+    ErrorResponse errorResponse = (ErrorResponse) o;
+    return Objects.equals(this.version, errorResponse.version) &&
+        Objects.equals(this.error, errorResponse.error) &&
+        Objects.equals(this.message, errorResponse.message) &&
+        Objects.equals(this.results, errorResponse.results) &&
+        Objects.equals(this.code, errorResponse.code);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(version, error, message, results);
+    return Objects.hash(version, error, message, results, code);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class QueryResponse {\n");
+    sb.append("class ErrorResponse {\n");
     
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    results: ").append(toIndentedString(results)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -17,11 +17,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 /**
- * StatisticsResponse
+ * AnyObject
  */
 
 
-public class StatisticsResponse extends HashMap<String, Object> {
+public class AnyObject extends HashMap<String, Object> {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -43,7 +43,7 @@ public class StatisticsResponse extends HashMap<String, Object> {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class StatisticsResponse {\n");
+    sb.append("class AnyObject {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();
