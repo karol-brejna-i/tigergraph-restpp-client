@@ -19,18 +19,18 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.ProcessInfo;
+import io.github.karol_brejna_i.tigergraph.restppclient.model.QueryStatusItem;
 import io.github.karol_brejna_i.tigergraph.restppclient.model.Version;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * ProcessListResponse
+ * QueryStatusResponse
  */
 
 
-public class ProcessListResponse {
+public class QueryStatusResponse {
   @SerializedName("version")
   private Version version = null;
 
@@ -41,12 +41,15 @@ public class ProcessListResponse {
   private String message = null;
 
   @SerializedName("results")
-  private List<ProcessInfo> results = new ArrayList<ProcessInfo>();
+  private List<QueryStatusItem> results = new ArrayList<QueryStatusItem>();
+
+  @SerializedName("unknown_requestid")
+  private List<String> unknownRequestid = null;
 
   @SerializedName("code")
   private String code = null;
 
-  public ProcessListResponse version(Version version) {
+  public QueryStatusResponse version(Version version) {
     this.version = version;
     return this;
   }
@@ -64,7 +67,7 @@ public class ProcessListResponse {
     this.version = version;
   }
 
-  public ProcessListResponse error(Boolean error) {
+  public QueryStatusResponse error(Boolean error) {
     this.error = error;
     return this;
   }
@@ -82,7 +85,7 @@ public class ProcessListResponse {
     this.error = error;
   }
 
-  public ProcessListResponse message(String message) {
+  public QueryStatusResponse message(String message) {
     this.message = message;
     return this;
   }
@@ -100,12 +103,12 @@ public class ProcessListResponse {
     this.message = message;
   }
 
-  public ProcessListResponse results(List<ProcessInfo> results) {
+  public QueryStatusResponse results(List<QueryStatusItem> results) {
     this.results = results;
     return this;
   }
 
-  public ProcessListResponse addResultsItem(ProcessInfo resultsItem) {
+  public QueryStatusResponse addResultsItem(QueryStatusItem resultsItem) {
     this.results.add(resultsItem);
     return this;
   }
@@ -115,15 +118,41 @@ public class ProcessListResponse {
    * @return results
   **/
   @Schema(required = true, description = "")
-  public List<ProcessInfo> getResults() {
+  public List<QueryStatusItem> getResults() {
     return results;
   }
 
-  public void setResults(List<ProcessInfo> results) {
+  public void setResults(List<QueryStatusItem> results) {
     this.results = results;
   }
 
-  public ProcessListResponse code(String code) {
+  public QueryStatusResponse unknownRequestid(List<String> unknownRequestid) {
+    this.unknownRequestid = unknownRequestid;
+    return this;
+  }
+
+  public QueryStatusResponse addUnknownRequestidItem(String unknownRequestidItem) {
+    if (this.unknownRequestid == null) {
+      this.unknownRequestid = new ArrayList<String>();
+    }
+    this.unknownRequestid.add(unknownRequestidItem);
+    return this;
+  }
+
+   /**
+   * Get unknownRequestid
+   * @return unknownRequestid
+  **/
+  @Schema(description = "")
+  public List<String> getUnknownRequestid() {
+    return unknownRequestid;
+  }
+
+  public void setUnknownRequestid(List<String> unknownRequestid) {
+    this.unknownRequestid = unknownRequestid;
+  }
+
+  public QueryStatusResponse code(String code) {
     this.code = code;
     return this;
   }
@@ -150,29 +179,31 @@ public class ProcessListResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ProcessListResponse processListResponse = (ProcessListResponse) o;
-    return Objects.equals(this.version, processListResponse.version) &&
-        Objects.equals(this.error, processListResponse.error) &&
-        Objects.equals(this.message, processListResponse.message) &&
-        Objects.equals(this.results, processListResponse.results) &&
-        Objects.equals(this.code, processListResponse.code);
+    QueryStatusResponse queryStatusResponse = (QueryStatusResponse) o;
+    return Objects.equals(this.version, queryStatusResponse.version) &&
+        Objects.equals(this.error, queryStatusResponse.error) &&
+        Objects.equals(this.message, queryStatusResponse.message) &&
+        Objects.equals(this.results, queryStatusResponse.results) &&
+        Objects.equals(this.unknownRequestid, queryStatusResponse.unknownRequestid) &&
+        Objects.equals(this.code, queryStatusResponse.code);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(version, error, message, results, code);
+    return Objects.hash(version, error, message, results, unknownRequestid, code);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ProcessListResponse {\n");
+    sb.append("class QueryStatusResponse {\n");
     
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    results: ").append(toIndentedString(results)).append("\n");
+    sb.append("    unknownRequestid: ").append(toIndentedString(unknownRequestid)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("}");
     return sb.toString();

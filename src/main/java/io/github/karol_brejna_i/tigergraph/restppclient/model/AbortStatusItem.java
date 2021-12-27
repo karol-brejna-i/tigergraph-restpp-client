@@ -22,51 +22,51 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * MessageResponse
+ * AbortStatusItem
  */
 
 
-public class MessageResponse {
-  @SerializedName("error")
-  private String error = null;
+public class AbortStatusItem {
+  @SerializedName("requestid")
+  private String requestid = null;
 
-  @SerializedName("message")
-  private String message = null;
+  @SerializedName("url")
+  private String url = null;
 
-  public MessageResponse error(String error) {
-    this.error = error;
+  public AbortStatusItem requestid(String requestid) {
+    this.requestid = requestid;
     return this;
   }
 
    /**
-   * Get error
-   * @return error
+   * Get requestid
+   * @return requestid
   **/
   @Schema(description = "")
-  public String getError() {
-    return error;
+  public String getRequestid() {
+    return requestid;
   }
 
-  public void setError(String error) {
-    this.error = error;
+  public void setRequestid(String requestid) {
+    this.requestid = requestid;
   }
 
-  public MessageResponse message(String message) {
-    this.message = message;
+  public AbortStatusItem url(String url) {
+    this.url = url;
     return this;
   }
 
    /**
-   * Get message
-   * @return message
+   * Get url
+   * @return url
   **/
   @Schema(description = "")
-  public String getMessage() {
-    return message;
+  public String getUrl() {
+    return url;
   }
 
-  public void setMessage(String message) {
-    this.message = message;
+  public void setUrl(String url) {
+    this.url = url;
   }
 
 
@@ -78,24 +78,24 @@ public class MessageResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MessageResponse messageResponse = (MessageResponse) o;
-    return Objects.equals(this.error, messageResponse.error) &&
-        Objects.equals(this.message, messageResponse.message);
+    AbortStatusItem abortStatusItem = (AbortStatusItem) o;
+    return Objects.equals(this.requestid, abortStatusItem.requestid) &&
+        Objects.equals(this.url, abortStatusItem.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(error, message);
+    return Objects.hash(requestid, url);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MessageResponse {\n");
+    sb.append("class AbortStatusItem {\n");
     
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    requestid: ").append(toIndentedString(requestid)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -7,4 +7,4 @@ Name | Type | Description | Notes
 **startTime** | **String** |  |  [optional]
 **expirationTime** | **String** |  |  [optional]
 **url** | **String** |  |  [optional]
-**elapsedTime** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
+**elapsedTime** | **Integer** |  |  [optional]

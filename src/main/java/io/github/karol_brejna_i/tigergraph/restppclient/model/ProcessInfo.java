@@ -21,7 +21,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-import java.math.BigDecimal;
 /**
  * ProcessInfo
  */
@@ -41,7 +40,7 @@ public class ProcessInfo {
   private String url = null;
 
   @SerializedName("elapsedTime")
-  private BigDecimal elapsedTime = null;
+  private Integer elapsedTime = null;
 
   public ProcessInfo requestid(String requestid) {
     this.requestid = requestid;
@@ -115,7 +114,7 @@ public class ProcessInfo {
     this.url = url;
   }
 
-  public ProcessInfo elapsedTime(BigDecimal elapsedTime) {
+  public ProcessInfo elapsedTime(Integer elapsedTime) {
     this.elapsedTime = elapsedTime;
     return this;
   }
@@ -125,11 +124,11 @@ public class ProcessInfo {
    * @return elapsedTime
   **/
   @Schema(description = "")
-  public BigDecimal getElapsedTime() {
+  public Integer getElapsedTime() {
     return elapsedTime;
   }
 
-  public void setElapsedTime(BigDecimal elapsedTime) {
+  public void setElapsedTime(Integer elapsedTime) {
     this.elapsedTime = elapsedTime;
   }
 

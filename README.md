@@ -85,52 +85,6 @@ public class DefaultApiExample {
         DefaultApi apiInstance = new DefaultApi();
         String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
         try {
-            HelloResponse result = apiInstance.abortqueryGraphNameGet(graphName);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#abortqueryGraphNameGet");
-            e.printStackTrace();
-        }
-    }
-}
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.auth.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        
-        DefaultApi apiInstance = new DefaultApi();
-        String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-        try {
-            HelloResponse result = apiInstance.abortqueryGraphNamePost(graphName);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#abortqueryGraphNamePost");
-            e.printStackTrace();
-        }
-    }
-}
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.auth.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        
-        DefaultApi apiInstance = new DefaultApi();
-        String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-        try {
             HelloResponse result = apiInstance.allpathsGraphNameGet(graphName);
             System.out.println(result);
         } catch (ApiException e) {
@@ -545,52 +499,6 @@ public class DefaultApiExample {
     public static void main(String[] args) {
         
         DefaultApi apiInstance = new DefaultApi();
-        String requestid = "requestid_example"; // String | The id of a query request.
-        try {
-            HelloResponse result = apiInstance.queryResultRequestidGet(requestid);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#queryResultRequestidGet");
-            e.printStackTrace();
-        }
-    }
-}
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.auth.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        
-        DefaultApi apiInstance = new DefaultApi();
-        String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-        try {
-            HelloResponse result = apiInstance.queryStatusGraphNameGet(graphName);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#queryStatusGraphNameGet");
-            e.printStackTrace();
-        }
-    }
-}
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.invoker.auth.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.*;
-import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        
-        DefaultApi apiInstance = new DefaultApi();
         String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
         try {
             HelloResponse result = apiInstance.restpploaderGraphNamePost(graphName);
@@ -674,12 +582,10 @@ public class DefaultApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://192.168.0.105:9000*
+All URIs are relative to *{protocol}://{host}:{port}*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**abortqueryGraphNameGet**](docs/DefaultApi.md#abortqueryGraphNameGet) | **GET** /abortquery/{graph_name} | TBD
-*DefaultApi* | [**abortqueryGraphNamePost**](docs/DefaultApi.md#abortqueryGraphNamePost) | **POST** /abortquery/{graph_name} | TBD
 *DefaultApi* | [**allpathsGraphNameGet**](docs/DefaultApi.md#allpathsGraphNameGet) | **GET** /allpaths/{graph_name} | TBD
 *DefaultApi* | [**allpathsGraphNamePost**](docs/DefaultApi.md#allpathsGraphNamePost) | **POST** /allpaths/{graph_name} | TBD
 *DefaultApi* | [**builtinsGraphNamePost**](docs/DefaultApi.md#builtinsGraphNamePost) | **POST** /builtins/{graph_name} | TBD
@@ -697,8 +603,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**graphGraphNameVerticesVertexTypeVertexIdGet**](docs/DefaultApi.md#graphGraphNameVerticesVertexTypeVertexIdGet) | **GET** /graph/{graph_name}/vertices/{vertex_type}/{vertex_id} | TBD
 *DefaultApi* | [**graphVerticesVertexTypeVertexIdDelete**](docs/DefaultApi.md#graphVerticesVertexTypeVertexIdDelete) | **DELETE** /graph/vertices/{vertex_type}/{vertex_id} | TBD
 *DefaultApi* | [**graphVerticesVertexTypeVertexIdGet**](docs/DefaultApi.md#graphVerticesVertexTypeVertexIdGet) | **GET** /graph/vertices/{vertex_type}/{vertex_id} | TBD
-*DefaultApi* | [**queryResultRequestidGet**](docs/DefaultApi.md#queryResultRequestidGet) | **GET** /query_result/{requestid} | TBD
-*DefaultApi* | [**queryStatusGraphNameGet**](docs/DefaultApi.md#queryStatusGraphNameGet) | **GET** /query_status/{graph_name} | TBD
 *DefaultApi* | [**restpploaderGraphNamePost**](docs/DefaultApi.md#restpploaderGraphNamePost) | **POST** /restpploader/{graph_name} | TBD
 *DefaultApi* | [**shortestpathGraphNameGet**](docs/DefaultApi.md#shortestpathGraphNameGet) | **GET** /shortestpath/{graph_name} | TBD
 *DefaultApi* | [**shortestpathGraphNamePost**](docs/DefaultApi.md#shortestpathGraphNamePost) | **POST** /shortestpath/{graph_name} | TBD
@@ -710,19 +614,27 @@ Class | Method | HTTP request | Description
 *DiagnosticsApi* | [**rebuildnowPost**](docs/DiagnosticsApi.md#rebuildnowPost) | **POST** /rebuildnow/{graph_name} | Rebuild graph engine
 *DiagnosticsApi* | [**statistics**](docs/DiagnosticsApi.md#statistics) | **GET** /statistics/{graph_name} | Show query performance
 *DiagnosticsApi* | [**version**](docs/DiagnosticsApi.md#version) | **GET** /version/{graph_name} | Show component versions
+*QueryApi* | [**abortQueryGet**](docs/QueryApi.md#abortQueryGet) | **GET** /abortquery/{graph_name} | Abort a query
+*QueryApi* | [**abortQueryPost**](docs/QueryApi.md#abortQueryPost) | **POST** /abortquery/{graph_name} | Abort a query ** NOT TESTED **
+*QueryApi* | [**queryStatus**](docs/QueryApi.md#queryStatus) | **GET** /query_status/{graph_name} | Check query status (Detached Mode)
 *QueryApi* | [**runInstalledQueryGet**](docs/QueryApi.md#runInstalledQueryGet) | **GET** /query/{graph_name}/{query_name} | Run an installed query
 *QueryApi* | [**runInstalledQueryPost**](docs/QueryApi.md#runInstalledQueryPost) | **POST** /query/{graph_name}/{query_name} | Run an installed query
-*QueryApi* | [**showprocesslistGraphNameGet**](docs/QueryApi.md#showprocesslistGraphNameGet) | **GET** /showprocesslist/{graph_name} | List running queries
-*QueryApi* | [**showprocesslistGraphNamePost**](docs/QueryApi.md#showprocesslistGraphNamePost) | **POST** /showprocesslist/{graph_name} | listed in /endpoints results, but not mentioned in the docs...
+*QueryApi* | [**showProcessListGet**](docs/QueryApi.md#showProcessListGet) | **GET** /showprocesslist/{graph_name} | List running queries
+*QueryApi* | [**showProcessListPost**](docs/QueryApi.md#showProcessListPost) | **POST** /showprocesslist/{graph_name} | TODO XXX listed in /endpoints results, but not mentioned in the docs...
 
 ## Documentation for Models
 
+ - [AbortQueryResponse](docs/AbortQueryResponse.md)
+ - [AbortStatusItem](docs/AbortStatusItem.md)
+ - [AbortedQueryList](docs/AbortedQueryList.md)
  - [AnyObject](docs/AnyObject.md)
+ - [ErrorResponse](docs/ErrorResponse.md)
  - [HelloResponse](docs/HelloResponse.md)
- - [MessageResponse](docs/MessageResponse.md)
  - [ProcessInfo](docs/ProcessInfo.md)
  - [ProcessListResponse](docs/ProcessListResponse.md)
  - [QueryResponse](docs/QueryResponse.md)
+ - [QueryStatusItem](docs/QueryStatusItem.md)
+ - [QueryStatusResponse](docs/QueryStatusResponse.md)
  - [StatisticsResponse](docs/StatisticsResponse.md)
  - [Version](docs/Version.md)
 

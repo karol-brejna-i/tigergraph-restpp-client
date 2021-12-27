@@ -1,7 +1,7 @@
-# MessageResponse
+# AbortStatusItem
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**error** | **String** |  |  [optional]
-**message** | **String** |  |  [optional]
+**requestid** | **String** |  |  [optional]
+**url** | **String** |  |  [optional]

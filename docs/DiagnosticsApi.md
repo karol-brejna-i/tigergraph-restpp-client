@@ -1,6 +1,6 @@
 # DiagnosticsApi
 
-All URIs are relative to *http://192.168.0.105:9000*
+All URIs are relative to *{protocol}://{host}:{port}*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

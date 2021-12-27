@@ -40,36 +40,6 @@ public class DefaultApiTest {
      *          if the Api call fails
      */
     @Test
-    public void abortqueryGraphNameGetTest() throws Exception {
-        String graphName = null;
-        HelloResponse response = api.abortqueryGraphNameGet(graphName);
-
-        // TODO: test validations
-    }
-    /**
-     * TBD
-     *
-     * 
-     *
-     * @throws Exception
-     *          if the Api call fails
-     */
-    @Test
-    public void abortqueryGraphNamePostTest() throws Exception {
-        String graphName = null;
-        HelloResponse response = api.abortqueryGraphNamePost(graphName);
-
-        // TODO: test validations
-    }
-    /**
-     * TBD
-     *
-     * 
-     *
-     * @throws Exception
-     *          if the Api call fails
-     */
-    @Test
     public void allpathsGraphNameGetTest() throws Exception {
         String graphName = null;
         HelloResponse response = api.allpathsGraphNameGet(graphName);
@@ -338,36 +308,6 @@ public class DefaultApiTest {
         String vertexType = null;
         String vertexId = null;
         HelloResponse response = api.graphVerticesVertexTypeVertexIdGet(vertexType, vertexId);
-
-        // TODO: test validations
-    }
-    /**
-     * TBD
-     *
-     * This endpoint allows you to check the results of queries run in Detached Mode if they have finished running. If the query is still running, the endpoint will respond with an error and a message saying \&quot;Unable to retrieve result for query &lt;requestid&gt;\&quot;. Ensure that the query is finished before checking its result. 
-     *
-     * @throws Exception
-     *          if the Api call fails
-     */
-    @Test
-    public void queryResultRequestidGetTest() throws Exception {
-        String requestid = null;
-        HelloResponse response = api.queryResultRequestidGet(requestid);
-
-        // TODO: test validations
-    }
-    /**
-     * TBD
-     *
-     * 
-     *
-     * @throws Exception
-     *          if the Api call fails
-     */
-    @Test
-    public void queryStatusGraphNameGetTest() throws Exception {
-        String graphName = null;
-        HelloResponse response = api.queryStatusGraphNameGet(graphName);
 
         // TODO: test validations
     }
