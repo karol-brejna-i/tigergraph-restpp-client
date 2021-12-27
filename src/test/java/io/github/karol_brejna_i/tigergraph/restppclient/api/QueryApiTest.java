@@ -12,10 +12,11 @@
 
 package io.github.karol_brejna_i.tigergraph.restppclient.api;
 
-import java.math.BigDecimal;
+import io.github.karol_brejna_i.tigergraph.restppclient.model.AbortQueryResponse;
 import io.github.karol_brejna_i.tigergraph.restppclient.model.ErrorResponse;
 import io.github.karol_brejna_i.tigergraph.restppclient.model.ProcessListResponse;
 import io.github.karol_brejna_i.tigergraph.restppclient.model.QueryResponse;
+import io.github.karol_brejna_i.tigergraph.restppclient.model.QueryStatusResponse;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -35,6 +36,53 @@ public class QueryApiTest {
     private final QueryApi api = new QueryApi();
 
     /**
+     * Abort a query
+     *
+     * This endpoint safely aborts a selected query by ID or all queries of an endpoint by endpoint URL of a graph.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_abort_a_query 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void abortQueryGetTest() throws Exception {
+        String graphName = null;
+        String requestid = null;
+        AbortQueryResponse response = api.abortQueryGet(graphName, requestid);
+
+        // TODO: test validations
+    }
+    /**
+     * Abort a query ** NOT TESTED **
+     *
+     * This endpoint safely aborts a selected query by ID or all queries of an endpoint by endpoint URL of a graph.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_abort_a_query 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void abortQueryPostTest() throws Exception {
+        String graphName = null;
+        AbortQueryResponse response = api.abortQueryPost(graphName);
+
+        // TODO: test validations
+    }
+    /**
+     * Check query status (Detached Mode)
+     *
+     * This endpoint allows you to check the status of a query run in detached mode.  https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_check_query_status_detached_modes 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void queryStatusTest() throws Exception {
+        String graphName = null;
+        List<String> requestid = null;
+        QueryStatusResponse response = api.queryStatus(graphName, requestid);
+
+        // TODO: test validations
+    }
+    /**
      * Run an installed query
      *
      * Each time a new TigerGraph query is installed, a dynamic endpoint is generated. This new endpoint enables the user to run the new TigerGraph query through HTTP requests and giving the parameters in URL or in a data payload. In the case of a GET request, parameters should be passed in through the query string. 
@@ -46,13 +94,14 @@ public class QueryApiTest {
     public void runInstalledQueryGetTest() throws Exception {
         String graphName = null;
         String queryName = null;
-        BigDecimal GSQL_REPLICA = null;
-        BigDecimal GSQL_THREAD_LIMIT = null;
-        BigDecimal GSQL_TIMEOUT = null;
-        BigDecimal RESPONSE_LIMIT = null;
+        Integer GSQL_REPLICA = null;
+        Integer GSQL_THREAD_LIMIT = null;
+        Integer GSQL_TIMEOUT = null;
+        Boolean GSQL_ASYNC = null;
+        Integer RESPONSE_LIMIT = null;
         Boolean readCommitted = null;
         Map<String, String> params = null;
-        QueryResponse response = api.runInstalledQueryGet(graphName, queryName, GSQL_REPLICA, GSQL_THREAD_LIMIT, GSQL_TIMEOUT, RESPONSE_LIMIT, readCommitted, params);
+        QueryResponse response = api.runInstalledQueryGet(graphName, queryName, GSQL_REPLICA, GSQL_THREAD_LIMIT, GSQL_TIMEOUT, GSQL_ASYNC, RESPONSE_LIMIT, readCommitted, params);
 
         // TODO: test validations
     }
@@ -69,12 +118,13 @@ public class QueryApiTest {
         String graphName = null;
         String queryName = null;
         Object body = null;
-        BigDecimal GSQL_REPLICA = null;
-        BigDecimal GSQL_THREAD_LIMIT = null;
-        BigDecimal GSQL_TIMEOUT = null;
-        BigDecimal RESPONSE_LIMIT = null;
+        Integer GSQL_REPLICA = null;
+        Integer GSQL_THREAD_LIMIT = null;
+        Integer GSQL_TIMEOUT = null;
+        Boolean GSQL_ASYNC = null;
+        Integer RESPONSE_LIMIT = null;
         Boolean readCommitted = null;
-        QueryResponse response = api.runInstalledQueryPost(graphName, queryName, body, GSQL_REPLICA, GSQL_THREAD_LIMIT, GSQL_TIMEOUT, RESPONSE_LIMIT, readCommitted);
+        QueryResponse response = api.runInstalledQueryPost(graphName, queryName, body, GSQL_REPLICA, GSQL_THREAD_LIMIT, GSQL_TIMEOUT, GSQL_ASYNC, RESPONSE_LIMIT, readCommitted);
 
         // TODO: test validations
     }
@@ -94,7 +144,7 @@ public class QueryApiTest {
         // TODO: test validations
     }
     /**
-     * listed in /endpoints results, but not mentioned in the docs...
+     * TODO XXX listed in /endpoints results, but not mentioned in the docs...
      *
      * 
      *

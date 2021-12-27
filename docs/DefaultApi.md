@@ -1,11 +1,9 @@
 # DefaultApi
 
-All URIs are relative to *http://192.168.0.105:9000*
+All URIs are relative to *{protocol}://{host}:{port}*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**abortqueryGraphNameGet**](DefaultApi.md#abortqueryGraphNameGet) | **GET** /abortquery/{graph_name} | TBD
-[**abortqueryGraphNamePost**](DefaultApi.md#abortqueryGraphNamePost) | **POST** /abortquery/{graph_name} | TBD
 [**allpathsGraphNameGet**](DefaultApi.md#allpathsGraphNameGet) | **GET** /allpaths/{graph_name} | TBD
 [**allpathsGraphNamePost**](DefaultApi.md#allpathsGraphNamePost) | **POST** /allpaths/{graph_name} | TBD
 [**builtinsGraphNamePost**](DefaultApi.md#builtinsGraphNamePost) | **POST** /builtins/{graph_name} | TBD
@@ -23,98 +21,10 @@ Method | HTTP request | Description
 [**graphGraphNameVerticesVertexTypeVertexIdGet**](DefaultApi.md#graphGraphNameVerticesVertexTypeVertexIdGet) | **GET** /graph/{graph_name}/vertices/{vertex_type}/{vertex_id} | TBD
 [**graphVerticesVertexTypeVertexIdDelete**](DefaultApi.md#graphVerticesVertexTypeVertexIdDelete) | **DELETE** /graph/vertices/{vertex_type}/{vertex_id} | TBD
 [**graphVerticesVertexTypeVertexIdGet**](DefaultApi.md#graphVerticesVertexTypeVertexIdGet) | **GET** /graph/vertices/{vertex_type}/{vertex_id} | TBD
-[**queryResultRequestidGet**](DefaultApi.md#queryResultRequestidGet) | **GET** /query_result/{requestid} | TBD
-[**queryStatusGraphNameGet**](DefaultApi.md#queryStatusGraphNameGet) | **GET** /query_status/{graph_name} | TBD
 [**restpploaderGraphNamePost**](DefaultApi.md#restpploaderGraphNamePost) | **POST** /restpploader/{graph_name} | TBD
 [**shortestpathGraphNameGet**](DefaultApi.md#shortestpathGraphNameGet) | **GET** /shortestpath/{graph_name} | TBD
 [**shortestpathGraphNamePost**](DefaultApi.md#shortestpathGraphNamePost) | **POST** /shortestpath/{graph_name} | TBD
 [**showlicenseinfoGraphNameGet**](DefaultApi.md#showlicenseinfoGraphNameGet) | **GET** /showlicenseinfo/{graph_name} | TBD
-
-<a name="abortqueryGraphNameGet"></a>
-# **abortqueryGraphNameGet**
-> HelloResponse abortqueryGraphNameGet(graphName)
-
-TBD
-
-### Example
-```java
-// Import classes:
-//import io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiException;
-//import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-
-DefaultApi apiInstance = new DefaultApi();
-String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-try {
-    HelloResponse result = apiInstance.abortqueryGraphNameGet(graphName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#abortqueryGraphNameGet");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **graphName** | **String**| The name of the graph (REQUIRED in case of multiple graph in the database). |
-
-### Return type
-
-[**HelloResponse**](HelloResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="abortqueryGraphNamePost"></a>
-# **abortqueryGraphNamePost**
-> HelloResponse abortqueryGraphNamePost(graphName)
-
-TBD
-
-### Example
-```java
-// Import classes:
-//import io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiException;
-//import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-
-DefaultApi apiInstance = new DefaultApi();
-String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-try {
-    HelloResponse result = apiInstance.abortqueryGraphNamePost(graphName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#abortqueryGraphNamePost");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **graphName** | **String**| The name of the graph (REQUIRED in case of multiple graph in the database). |
-
-### Return type
-
-[**HelloResponse**](HelloResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
 
 <a name="allpathsGraphNameGet"></a>
 # **allpathsGraphNameGet**
@@ -883,94 +793,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **vertexType** | **String**| The type of vertex. |
  **vertexId** | **String**| The ID of the vertex. |
-
-### Return type
-
-[**HelloResponse**](HelloResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="queryResultRequestidGet"></a>
-# **queryResultRequestidGet**
-> HelloResponse queryResultRequestidGet(requestid)
-
-TBD
-
-This endpoint allows you to check the results of queries run in Detached Mode if they have finished running. If the query is still running, the endpoint will respond with an error and a message saying \&quot;Unable to retrieve result for query &lt;requestid&gt;\&quot;. Ensure that the query is finished before checking its result. 
-
-### Example
-```java
-// Import classes:
-//import io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiException;
-//import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-
-DefaultApi apiInstance = new DefaultApi();
-String requestid = "requestid_example"; // String | The id of a query request.
-try {
-    HelloResponse result = apiInstance.queryResultRequestidGet(requestid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#queryResultRequestidGet");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **requestid** | **String**| The id of a query request. |
-
-### Return type
-
-[**HelloResponse**](HelloResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="queryStatusGraphNameGet"></a>
-# **queryStatusGraphNameGet**
-> HelloResponse queryStatusGraphNameGet(graphName)
-
-TBD
-
-### Example
-```java
-// Import classes:
-//import io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiException;
-//import io.github.karol_brejna_i.tigergraph.restppclient.api.DefaultApi;
-
-
-DefaultApi apiInstance = new DefaultApi();
-String graphName = "graphName_example"; // String | The name of the graph (REQUIRED in case of multiple graph in the database).
-try {
-    HelloResponse result = apiInstance.queryStatusGraphNameGet(graphName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#queryStatusGraphNameGet");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **graphName** | **String**| The name of the graph (REQUIRED in case of multiple graph in the database). |
 
 ### Return type
 
