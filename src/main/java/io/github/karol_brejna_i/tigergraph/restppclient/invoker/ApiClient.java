@@ -53,7 +53,7 @@ import io.github.karol_brejna_i.tigergraph.restppclient.invoker.auth.OAuth;
 
 public class ApiClient {
 
-    private String basePath = "http://192.168.0.105:9000";
+    private String basePath = "{protocol}://{host}:{port}";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
@@ -86,7 +86,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("Swagger-Codegen/1.0.0/java");
+        setUserAgent("restpp-client/0.0.1/java");
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();
@@ -106,7 +106,7 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g http://192.168.0.105:9000
+     * @param basePath Base path of the URL (e.g {protocol}://{host}:{port}
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {

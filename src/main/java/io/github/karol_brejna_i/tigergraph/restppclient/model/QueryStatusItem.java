@@ -19,7 +19,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.ProcessInfo;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
@@ -27,7 +26,22 @@ import java.io.IOException;
  */
 
 
-public class QueryStatusItem extends ProcessInfo {
+public class QueryStatusItem {
+  @SerializedName("requestid")
+  private String requestid = null;
+
+  @SerializedName("startTime")
+  private String startTime = null;
+
+  @SerializedName("expirationTime")
+  private String expirationTime = null;
+
+  @SerializedName("url")
+  private String url = null;
+
+  @SerializedName("elapsedTime")
+  private Integer elapsedTime = null;
+
   /**
    * The status of the given query.
    */
@@ -74,6 +88,96 @@ public class QueryStatusItem extends ProcessInfo {
   }  @SerializedName("status")
   private StatusEnum status = null;
 
+  public QueryStatusItem requestid(String requestid) {
+    this.requestid = requestid;
+    return this;
+  }
+
+   /**
+   * Get requestid
+   * @return requestid
+  **/
+  @Schema(description = "")
+  public String getRequestid() {
+    return requestid;
+  }
+
+  public void setRequestid(String requestid) {
+    this.requestid = requestid;
+  }
+
+  public QueryStatusItem startTime(String startTime) {
+    this.startTime = startTime;
+    return this;
+  }
+
+   /**
+   * Get startTime
+   * @return startTime
+  **/
+  @Schema(example = "2021-12-25 08:20:08.272", description = "")
+  public String getStartTime() {
+    return startTime;
+  }
+
+  public void setStartTime(String startTime) {
+    this.startTime = startTime;
+  }
+
+  public QueryStatusItem expirationTime(String expirationTime) {
+    this.expirationTime = expirationTime;
+    return this;
+  }
+
+   /**
+   * Get expirationTime
+   * @return expirationTime
+  **/
+  @Schema(example = "2021-12-25 08:20:08.272", description = "")
+  public String getExpirationTime() {
+    return expirationTime;
+  }
+
+  public void setExpirationTime(String expirationTime) {
+    this.expirationTime = expirationTime;
+  }
+
+  public QueryStatusItem url(String url) {
+    this.url = url;
+    return this;
+  }
+
+   /**
+   * Get url
+   * @return url
+  **/
+  @Schema(description = "")
+  public String getUrl() {
+    return url;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+  public QueryStatusItem elapsedTime(Integer elapsedTime) {
+    this.elapsedTime = elapsedTime;
+    return this;
+  }
+
+   /**
+   * Get elapsedTime
+   * @return elapsedTime
+  **/
+  @Schema(description = "")
+  public Integer getElapsedTime() {
+    return elapsedTime;
+  }
+
+  public void setElapsedTime(Integer elapsedTime) {
+    this.elapsedTime = elapsedTime;
+  }
+
   public QueryStatusItem status(StatusEnum status) {
     this.status = status;
     return this;
@@ -102,13 +206,17 @@ public class QueryStatusItem extends ProcessInfo {
       return false;
     }
     QueryStatusItem queryStatusItem = (QueryStatusItem) o;
-    return Objects.equals(this.status, queryStatusItem.status) &&
-        super.equals(o);
+    return Objects.equals(this.requestid, queryStatusItem.requestid) &&
+        Objects.equals(this.startTime, queryStatusItem.startTime) &&
+        Objects.equals(this.expirationTime, queryStatusItem.expirationTime) &&
+        Objects.equals(this.url, queryStatusItem.url) &&
+        Objects.equals(this.elapsedTime, queryStatusItem.elapsedTime) &&
+        Objects.equals(this.status, queryStatusItem.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, super.hashCode());
+    return Objects.hash(requestid, startTime, expirationTime, url, elapsedTime, status);
   }
 
 
@@ -116,7 +224,12 @@ public class QueryStatusItem extends ProcessInfo {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class QueryStatusItem {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
+    sb.append("    requestid: ").append(toIndentedString(requestid)).append("\n");
+    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    expirationTime: ").append(toIndentedString(expirationTime)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    elapsedTime: ").append(toIndentedString(elapsedTime)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();

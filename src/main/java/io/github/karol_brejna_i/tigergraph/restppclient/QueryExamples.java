@@ -7,10 +7,9 @@ import io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiCallback;
 import io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiClient;
 import io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiException;
 import io.github.karol_brejna_i.tigergraph.restppclient.invoker.Configuration;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.AbortQueryResponse;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.ProcessListResponse;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.QueryResponse;
+import io.github.karol_brejna_i.tigergraph.restppclient.model.*;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +31,7 @@ public class QueryExamples {
 
     static {
         ApiClient defaultApiClient = Configuration.getDefaultApiClient();
-        defaultApiClient.setBasePath("http://192.168.0.105:9000");
+        defaultApiClient.setBasePath("http://172.28.101.214:9000");
         Configuration.setDefaultApiClient(defaultApiClient);
     }
 
@@ -79,12 +78,37 @@ public class QueryExamples {
         }
         QueryResponse result = null;
         try {
-            result = apiInstance.runInstalledQueryGet(graphName, queryName);
+            result = apiInstance.runInstalledQueryGet(graphName, queryName,
+                    null, null, null, null, null, null, null);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#runQueryGet");
             e.printStackTrace();
         }
         System.out.println(result);
+    }
+
+    public static String runQueryDetachedGet(String queryName) {
+        System.out.println("runQueryGet");
+        QueryApi apiInstance = new QueryApi();
+
+        if (queryName == null) {
+            queryName = "aa";
+        }
+        QueryResponse result = null;
+        try {
+            result = apiInstance.runInstalledQueryGet(graphName, queryName,
+                    null, null, null, true, null, null,
+                    null);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#runQueryGet");
+            e.printStackTrace();
+        }
+        System.out.println(result);
+        String requestId = null;
+        if (result != null) {
+            requestId = result.getRequestId();
+        }
+        return requestId;
     }
 
     public static void runQueryGetAsync(String queryName) {
@@ -105,7 +129,7 @@ public class QueryExamples {
 
                 @Override
                 public void onSuccess(QueryResponse result, int statusCode, Map<String, List<String>> responseHeaders) {
-                    System.out.println("Success!");
+                    System.out.println("--------SUCCESS!");
                     System.out.println(result);
                 }
 
@@ -128,13 +152,32 @@ public class QueryExamples {
         System.out.println(result);
     }
 
-    public static void dafd(String queryName) {
-        System.out.println("dafd");
+    public static void abortQuery(String requestId) {
+        System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
+        QueryApi apiInstance = new QueryApi();
+        AbortQueryResponse result = null;
+        if (requestId == null) {
+            requestId = "all";
+        }
+        try {
+            result = apiInstance.abortQueryGet(graphName, requestId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#abortQuery");
+            e.printStackTrace();
+        }
+        System.out.println(result);
+    }
+
+    public static void queryStatus(String requestId) {
+        System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
         QueryApi apiInstance = new QueryApi();
 
-        AbortQueryResponse result = null;
+        if (requestId == null) {
+            requestId = "all";
+        }
+        QueryStatusResponse result = null;
         try {
-            result = apiInstance.abortQueryGet(graphName, "all");
+            result = apiInstance.queryStatus(graphName, Arrays.asList(requestId));
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#runQueryGet");
             e.printStackTrace();
@@ -142,7 +185,24 @@ public class QueryExamples {
         System.out.println(result);
     }
 
-    public static void zapchaj(int cnt) {
+    public static void queryResult(String requestId) {
+        System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
+        QueryApi apiInstance = new QueryApi();
+
+        if (requestId == null) {
+            requestId = "all";
+        }
+        QueryResultResponse result = null;
+        try {
+            result = apiInstance.queryResult(requestId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#runQueryGet");
+            e.printStackTrace();
+        }
+        System.out.println(result);
+    }
+
+    public static void makeTGBussy(int cnt) {
         for (int i = 0; i < cnt; i++) {
             runQueryGetAsync("a");
             try {
@@ -155,15 +215,28 @@ public class QueryExamples {
     }
 
     public static void main(String[] args) {
-//        runQueryGetAsync(null);
-//        runQueryGet("aaa");
-//        runQueryGet("aa");
-//        runQueryGetAsync("a");
-//        runQueryGetAsync("a");
-//        runQueryGetAsync("a");
-//        listProcessGet();
-//        listProcessGet();
-//        listProcessGet();
-        zapchaj(10);
+        String requestId = null;
+        runQueryGetAsync(null);
+        runQueryGet("aaa");
+        runQueryGet("aa");
+        runQueryGetAsync("a");
+        listProcessGet();
+        listProcessGet();
+        listProcessGet();
+        queryStatus("all");
+        makeTGBussy(10);
+
+        // check status and result
+        requestId = runQueryDetachedGet("aa");
+        queryStatus(requestId);
+        queryResult(requestId);
+
+        // abort query
+        requestId = runQueryDetachedGet("a");
+        queryStatus(requestId);
+        queryResult(requestId);
+        abortQuery(requestId);
+        queryResult(requestId);
+
     }
 }

@@ -1,4 +1,4 @@
-# QueryResponse
+# QueryResultResponse
 
 ## Properties
 Name | Type | Description | Notes
@@ -7,4 +7,3 @@ Name | Type | Description | Notes
 **error** | **Boolean** |  |  [optional]
 **message** | **String** |  |  [optional]
 **results** | **List&lt;Object&gt;** |  |  [optional]
-**requestId** | **String** |  |  [optional]

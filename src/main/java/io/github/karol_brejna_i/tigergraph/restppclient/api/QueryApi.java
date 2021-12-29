@@ -30,6 +30,7 @@ import io.github.karol_brejna_i.tigergraph.restppclient.model.AbortQueryResponse
 import io.github.karol_brejna_i.tigergraph.restppclient.model.ErrorResponse;
 import io.github.karol_brejna_i.tigergraph.restppclient.model.ProcessListResponse;
 import io.github.karol_brejna_i.tigergraph.restppclient.model.QueryResponse;
+import io.github.karol_brejna_i.tigergraph.restppclient.model.QueryResultResponse;
 import io.github.karol_brejna_i.tigergraph.restppclient.model.QueryStatusResponse;
 
 import java.lang.reflect.Type;
@@ -259,7 +260,7 @@ public class QueryApi {
     }
 
     /**
-     * Abort a query ** NOT TESTED **
+     * Abort a query
      * This endpoint safely aborts a selected query by ID or all queries of an endpoint by endpoint URL of a graph.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_abort_a_query 
      * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
      * @return AbortQueryResponse
@@ -271,7 +272,7 @@ public class QueryApi {
     }
 
     /**
-     * Abort a query ** NOT TESTED **
+     * Abort a query
      * This endpoint safely aborts a selected query by ID or all queries of an endpoint by endpoint URL of a graph.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_abort_a_query 
      * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
      * @return ApiResponse&lt;AbortQueryResponse&gt;
@@ -284,7 +285,7 @@ public class QueryApi {
     }
 
     /**
-     * Abort a query ** NOT TESTED ** (asynchronously)
+     * Abort a query (asynchronously)
      * This endpoint safely aborts a selected query by ID or all queries of an endpoint by endpoint URL of a graph.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_abort_a_query 
      * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
      * @param callback The callback to be executed when the API call finishes
@@ -314,6 +315,131 @@ public class QueryApi {
 
         com.squareup.okhttp.Call call = abortQueryPostValidateBeforeCall(graphName, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AbortQueryResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for queryResult
+     * @param requestid The id of a query request. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call queryResultCall(String requestid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/query_result/{requestid}"
+            .replaceAll("\\{" + "requestid" + "\\}", apiClient.escapeString(requestid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call queryResultValidateBeforeCall(String requestid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'requestid' is set
+        if (requestid == null) {
+            throw new ApiException("Missing the required parameter 'requestid' when calling queryResult(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = queryResultCall(requestid, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Check query results (Detached Mode)
+     * This endpoint allows you to check the results of queries run in Detached Mode if they have finished running. If the query is still running, the endpoint will respond with an error and a message saying \&quot;Unable to retrieve result for query &lt;requestid&gt;\&quot;. Ensure that the query is finished before checking its result.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_check_query_results_detached_mode 
+     * @param requestid The id of a query request. (required)
+     * @return QueryResultResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public QueryResultResponse queryResult(String requestid) throws ApiException {
+        ApiResponse<QueryResultResponse> resp = queryResultWithHttpInfo(requestid);
+        return resp.getData();
+    }
+
+    /**
+     * Check query results (Detached Mode)
+     * This endpoint allows you to check the results of queries run in Detached Mode if they have finished running. If the query is still running, the endpoint will respond with an error and a message saying \&quot;Unable to retrieve result for query &lt;requestid&gt;\&quot;. Ensure that the query is finished before checking its result.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_check_query_results_detached_mode 
+     * @param requestid The id of a query request. (required)
+     * @return ApiResponse&lt;QueryResultResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<QueryResultResponse> queryResultWithHttpInfo(String requestid) throws ApiException {
+        com.squareup.okhttp.Call call = queryResultValidateBeforeCall(requestid, null, null);
+        Type localVarReturnType = new TypeToken<QueryResultResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Check query results (Detached Mode) (asynchronously)
+     * This endpoint allows you to check the results of queries run in Detached Mode if they have finished running. If the query is still running, the endpoint will respond with an error and a message saying \&quot;Unable to retrieve result for query &lt;requestid&gt;\&quot;. Ensure that the query is finished before checking its result.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_check_query_results_detached_mode 
+     * @param requestid The id of a query request. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call queryResultAsync(String requestid, final ApiCallback<QueryResultResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = queryResultValidateBeforeCall(requestid, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<QueryResultResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -881,7 +1007,7 @@ public class QueryApi {
 
     /**
      * List running queries
-     * This endpoint reports statistics of running queries of a graph: the query’s request ID, start time, expiration time, and the REST endpoint’s URL  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_list_running_queries 
+     * This endpoint reports statistics of running queries of a graph: the query&#x27;s request ID, start time, expiration time, and the REST endpoint&#x27;s URL.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_list_running_queries 
      * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
      * @return ProcessListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -893,7 +1019,7 @@ public class QueryApi {
 
     /**
      * List running queries
-     * This endpoint reports statistics of running queries of a graph: the query’s request ID, start time, expiration time, and the REST endpoint’s URL  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_list_running_queries 
+     * This endpoint reports statistics of running queries of a graph: the query&#x27;s request ID, start time, expiration time, and the REST endpoint&#x27;s URL.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_list_running_queries 
      * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
      * @return ApiResponse&lt;ProcessListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -906,7 +1032,7 @@ public class QueryApi {
 
     /**
      * List running queries (asynchronously)
-     * This endpoint reports statistics of running queries of a graph: the query’s request ID, start time, expiration time, and the REST endpoint’s URL  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_list_running_queries 
+     * This endpoint reports statistics of running queries of a graph: the query&#x27;s request ID, start time, expiration time, and the REST endpoint&#x27;s URL.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_list_running_queries 
      * @param graphName The name of the graph (REQUIRED in case of multiple graph in the database). (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call

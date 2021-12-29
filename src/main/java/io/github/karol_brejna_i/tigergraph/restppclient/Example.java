@@ -26,7 +26,7 @@ public class Example {
 
     static {
         ApiClient defaultApiClient = Configuration.getDefaultApiClient();
-        defaultApiClient.setBasePath("http://192.168.0.105:9000");
+        defaultApiClient.setBasePath("http://172.28.101.214:9000");
         Configuration.setDefaultApiClient(defaultApiClient);
     }
 
@@ -83,7 +83,9 @@ public class Example {
         System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
         QueryApi apiInstance = new QueryApi();
         AbortQueryResponse result = null;
-//        String requestId = "";
+        if (requestId == null) {
+            requestId = "all";
+        }
         try {
             result = apiInstance.abortQueryGet(graphName, requestId);
         } catch (ApiException e) {
@@ -100,7 +102,5 @@ public class Example {
         statistics();
         listProcessGet();
         abortQuery("all");
-//        abortQuery("16908295.RESTPP_1_1.1640621537660.N");
-
     }
 }

@@ -3,6 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**requestid** | **String** |  |  [optional]
+**startTime** | **String** |  |  [optional]
+**expirationTime** | **String** |  |  [optional]
+**url** | **String** |  |  [optional]
+**elapsedTime** | **Integer** |  |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) | The status of the given query. |  [optional]
 
 <a name="StatusEnum"></a>

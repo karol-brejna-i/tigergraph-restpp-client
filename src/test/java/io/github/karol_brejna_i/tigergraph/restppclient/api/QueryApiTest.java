@@ -16,6 +16,7 @@ import io.github.karol_brejna_i.tigergraph.restppclient.model.AbortQueryResponse
 import io.github.karol_brejna_i.tigergraph.restppclient.model.ErrorResponse;
 import io.github.karol_brejna_i.tigergraph.restppclient.model.ProcessListResponse;
 import io.github.karol_brejna_i.tigergraph.restppclient.model.QueryResponse;
+import io.github.karol_brejna_i.tigergraph.restppclient.model.QueryResultResponse;
 import io.github.karol_brejna_i.tigergraph.restppclient.model.QueryStatusResponse;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -52,7 +53,7 @@ public class QueryApiTest {
         // TODO: test validations
     }
     /**
-     * Abort a query ** NOT TESTED **
+     * Abort a query
      *
      * This endpoint safely aborts a selected query by ID or all queries of an endpoint by endpoint URL of a graph.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_abort_a_query 
      *
@@ -63,6 +64,21 @@ public class QueryApiTest {
     public void abortQueryPostTest() throws Exception {
         String graphName = null;
         AbortQueryResponse response = api.abortQueryPost(graphName);
+
+        // TODO: test validations
+    }
+    /**
+     * Check query results (Detached Mode)
+     *
+     * This endpoint allows you to check the results of queries run in Detached Mode if they have finished running. If the query is still running, the endpoint will respond with an error and a message saying \&quot;Unable to retrieve result for query &lt;requestid&gt;\&quot;. Ensure that the query is finished before checking its result.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_check_query_results_detached_mode 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void queryResultTest() throws Exception {
+        String requestid = null;
+        QueryResultResponse response = api.queryResult(requestid);
 
         // TODO: test validations
     }
@@ -131,7 +147,7 @@ public class QueryApiTest {
     /**
      * List running queries
      *
-     * This endpoint reports statistics of running queries of a graph: the query’s request ID, start time, expiration time, and the REST endpoint’s URL  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_list_running_queries 
+     * This endpoint reports statistics of running queries of a graph: the query&#x27;s request ID, start time, expiration time, and the REST endpoint&#x27;s URL.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_list_running_queries 
      *
      * @throws Exception
      *          if the Api call fails
