@@ -25,11 +25,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * QueryResponse
+ * QueryResultResponse
  */
 
 
-public class QueryResponse {
+public class QueryResultResponse {
   @SerializedName("version")
   private Version version = null;
 
@@ -42,10 +42,7 @@ public class QueryResponse {
   @SerializedName("results")
   private List<Object> results = null;
 
-  @SerializedName("request_id")
-  private String requestId = null;
-
-  public QueryResponse version(Version version) {
+  public QueryResultResponse version(Version version) {
     this.version = version;
     return this;
   }
@@ -63,7 +60,7 @@ public class QueryResponse {
     this.version = version;
   }
 
-  public QueryResponse error(Boolean error) {
+  public QueryResultResponse error(Boolean error) {
     this.error = error;
     return this;
   }
@@ -81,7 +78,7 @@ public class QueryResponse {
     this.error = error;
   }
 
-  public QueryResponse message(String message) {
+  public QueryResultResponse message(String message) {
     this.message = message;
     return this;
   }
@@ -99,12 +96,12 @@ public class QueryResponse {
     this.message = message;
   }
 
-  public QueryResponse results(List<Object> results) {
+  public QueryResultResponse results(List<Object> results) {
     this.results = results;
     return this;
   }
 
-  public QueryResponse addResultsItem(Object resultsItem) {
+  public QueryResultResponse addResultsItem(Object resultsItem) {
     if (this.results == null) {
       this.results = new ArrayList<Object>();
     }
@@ -125,24 +122,6 @@ public class QueryResponse {
     this.results = results;
   }
 
-  public QueryResponse requestId(String requestId) {
-    this.requestId = requestId;
-    return this;
-  }
-
-   /**
-   * Get requestId
-   * @return requestId
-  **/
-  @Schema(example = "65546.RESTPP_1_1.1640626135521.N", description = "")
-  public String getRequestId() {
-    return requestId;
-  }
-
-  public void setRequestId(String requestId) {
-    this.requestId = requestId;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -152,30 +131,28 @@ public class QueryResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    QueryResponse queryResponse = (QueryResponse) o;
-    return Objects.equals(this.version, queryResponse.version) &&
-        Objects.equals(this.error, queryResponse.error) &&
-        Objects.equals(this.message, queryResponse.message) &&
-        Objects.equals(this.results, queryResponse.results) &&
-        Objects.equals(this.requestId, queryResponse.requestId);
+    QueryResultResponse queryResultResponse = (QueryResultResponse) o;
+    return Objects.equals(this.version, queryResultResponse.version) &&
+        Objects.equals(this.error, queryResultResponse.error) &&
+        Objects.equals(this.message, queryResultResponse.message) &&
+        Objects.equals(this.results, queryResultResponse.results);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(version, error, message, results, requestId);
+    return Objects.hash(version, error, message, results);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class QueryResponse {\n");
+    sb.append("class QueryResultResponse {\n");
     
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    results: ").append(toIndentedString(results)).append("\n");
-    sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -37,9 +37,9 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-  <groupId>io.github.karol_brejna_i.tigergraph</groupId>
+  <groupId>io.github.karol-brejna-i.tigergraph</groupId>
   <artifactId>restpp-client</artifactId>
-  <version>1.0.0</version>
+  <version>0.0.1-SNAPSHOT</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -49,7 +49,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.github.karol_brejna_i.tigergraph:restpp-client:1.0.0"
+compile "io.github.karol-brejna-i.tigergraph:restpp-client:0.0.1-SNAPSHOT"
 ```
 
 ### Others
@@ -62,7 +62,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/restpp-client-1.0.0.jar`
+* `target/restpp-client-0.0.1-SNAPSHOT.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -615,7 +615,8 @@ Class | Method | HTTP request | Description
 *DiagnosticsApi* | [**statistics**](docs/DiagnosticsApi.md#statistics) | **GET** /statistics/{graph_name} | Show query performance
 *DiagnosticsApi* | [**version**](docs/DiagnosticsApi.md#version) | **GET** /version/{graph_name} | Show component versions
 *QueryApi* | [**abortQueryGet**](docs/QueryApi.md#abortQueryGet) | **GET** /abortquery/{graph_name} | Abort a query
-*QueryApi* | [**abortQueryPost**](docs/QueryApi.md#abortQueryPost) | **POST** /abortquery/{graph_name} | Abort a query ** NOT TESTED **
+*QueryApi* | [**abortQueryPost**](docs/QueryApi.md#abortQueryPost) | **POST** /abortquery/{graph_name} | Abort a query
+*QueryApi* | [**queryResult**](docs/QueryApi.md#queryResult) | **GET** /query_result/{requestid} | Check query results (Detached Mode)
 *QueryApi* | [**queryStatus**](docs/QueryApi.md#queryStatus) | **GET** /query_status/{graph_name} | Check query status (Detached Mode)
 *QueryApi* | [**runInstalledQueryGet**](docs/QueryApi.md#runInstalledQueryGet) | **GET** /query/{graph_name}/{query_name} | Run an installed query
 *QueryApi* | [**runInstalledQueryPost**](docs/QueryApi.md#runInstalledQueryPost) | **POST** /query/{graph_name}/{query_name} | Run an installed query
@@ -633,8 +634,10 @@ Class | Method | HTTP request | Description
  - [ProcessInfo](docs/ProcessInfo.md)
  - [ProcessListResponse](docs/ProcessListResponse.md)
  - [QueryResponse](docs/QueryResponse.md)
+ - [QueryResultResponse](docs/QueryResultResponse.md)
  - [QueryStatusItem](docs/QueryStatusItem.md)
  - [QueryStatusResponse](docs/QueryStatusResponse.md)
+ - [QuerySubmittedResponse](docs/QuerySubmittedResponse.md)
  - [StatisticsResponse](docs/StatisticsResponse.md)
  - [Version](docs/Version.md)
 

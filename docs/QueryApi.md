@@ -5,7 +5,8 @@ All URIs are relative to *{protocol}://{host}:{port}*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**abortQueryGet**](QueryApi.md#abortQueryGet) | **GET** /abortquery/{graph_name} | Abort a query
-[**abortQueryPost**](QueryApi.md#abortQueryPost) | **POST** /abortquery/{graph_name} | Abort a query ** NOT TESTED **
+[**abortQueryPost**](QueryApi.md#abortQueryPost) | **POST** /abortquery/{graph_name} | Abort a query
+[**queryResult**](QueryApi.md#queryResult) | **GET** /query_result/{requestid} | Check query results (Detached Mode)
 [**queryStatus**](QueryApi.md#queryStatus) | **GET** /query_status/{graph_name} | Check query status (Detached Mode)
 [**runInstalledQueryGet**](QueryApi.md#runInstalledQueryGet) | **GET** /query/{graph_name}/{query_name} | Run an installed query
 [**runInstalledQueryPost**](QueryApi.md#runInstalledQueryPost) | **POST** /query/{graph_name}/{query_name} | Run an installed query
@@ -63,7 +64,7 @@ No authorization required
 # **abortQueryPost**
 > AbortQueryResponse abortQueryPost(graphName)
 
-Abort a query ** NOT TESTED **
+Abort a query
 
 This endpoint safely aborts a selected query by ID or all queries of an endpoint by endpoint URL of a graph.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_abort_a_query 
 
@@ -94,6 +95,51 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AbortQueryResponse**](AbortQueryResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="queryResult"></a>
+# **queryResult**
+> QueryResultResponse queryResult(requestid)
+
+Check query results (Detached Mode)
+
+This endpoint allows you to check the results of queries run in Detached Mode if they have finished running. If the query is still running, the endpoint will respond with an error and a message saying \&quot;Unable to retrieve result for query &lt;requestid&gt;\&quot;. Ensure that the query is finished before checking its result.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_check_query_results_detached_mode 
+
+### Example
+```java
+// Import classes:
+//import io.github.karol_brejna_i.tigergraph.restppclient.invoker.ApiException;
+//import io.github.karol_brejna_i.tigergraph.restppclient.api.QueryApi;
+
+
+QueryApi apiInstance = new QueryApi();
+String requestid = "requestid_example"; // String | The id of a query request.
+try {
+    QueryResultResponse result = apiInstance.queryResult(requestid);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling QueryApi#queryResult");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requestid** | **String**| The id of a query request. |
+
+### Return type
+
+[**QueryResultResponse**](QueryResultResponse.md)
 
 ### Authorization
 
@@ -279,7 +325,7 @@ No authorization required
 
 List running queries
 
-This endpoint reports statistics of running queries of a graph: the query’s request ID, start time, expiration time, and the REST endpoint’s URL  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_list_running_queries 
+This endpoint reports statistics of running queries of a graph: the query&#x27;s request ID, start time, expiration time, and the REST endpoint&#x27;s URL.  See: https://docs.tigergraph.com/tigergraph-server/current/api/built-in-endpoints#_list_running_queries 
 
 ### Example
 ```java

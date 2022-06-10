@@ -19,51 +19,24 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.github.karol_brejna_i.tigergraph.restppclient.model.Version;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 /**
- * QueryResponse
+ * QuerySubmittedResponse
  */
 
 
-public class QueryResponse {
-  @SerializedName("version")
-  private Version version = null;
-
+public class QuerySubmittedResponse {
   @SerializedName("error")
   private Boolean error = null;
 
   @SerializedName("message")
   private String message = null;
 
-  @SerializedName("results")
-  private List<Object> results = null;
-
   @SerializedName("request_id")
   private String requestId = null;
 
-  public QueryResponse version(Version version) {
-    this.version = version;
-    return this;
-  }
-
-   /**
-   * Get version
-   * @return version
-  **/
-  @Schema(description = "")
-  public Version getVersion() {
-    return version;
-  }
-
-  public void setVersion(Version version) {
-    this.version = version;
-  }
-
-  public QueryResponse error(Boolean error) {
+  public QuerySubmittedResponse error(Boolean error) {
     this.error = error;
     return this;
   }
@@ -81,7 +54,7 @@ public class QueryResponse {
     this.error = error;
   }
 
-  public QueryResponse message(String message) {
+  public QuerySubmittedResponse message(String message) {
     this.message = message;
     return this;
   }
@@ -99,33 +72,7 @@ public class QueryResponse {
     this.message = message;
   }
 
-  public QueryResponse results(List<Object> results) {
-    this.results = results;
-    return this;
-  }
-
-  public QueryResponse addResultsItem(Object resultsItem) {
-    if (this.results == null) {
-      this.results = new ArrayList<Object>();
-    }
-    this.results.add(resultsItem);
-    return this;
-  }
-
-   /**
-   * Get results
-   * @return results
-  **/
-  @Schema(description = "")
-  public List<Object> getResults() {
-    return results;
-  }
-
-  public void setResults(List<Object> results) {
-    this.results = results;
-  }
-
-  public QueryResponse requestId(String requestId) {
+  public QuerySubmittedResponse requestId(String requestId) {
     this.requestId = requestId;
     return this;
   }
@@ -152,29 +99,25 @@ public class QueryResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    QueryResponse queryResponse = (QueryResponse) o;
-    return Objects.equals(this.version, queryResponse.version) &&
-        Objects.equals(this.error, queryResponse.error) &&
-        Objects.equals(this.message, queryResponse.message) &&
-        Objects.equals(this.results, queryResponse.results) &&
-        Objects.equals(this.requestId, queryResponse.requestId);
+    QuerySubmittedResponse querySubmittedResponse = (QuerySubmittedResponse) o;
+    return Objects.equals(this.error, querySubmittedResponse.error) &&
+        Objects.equals(this.message, querySubmittedResponse.message) &&
+        Objects.equals(this.requestId, querySubmittedResponse.requestId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(version, error, message, results, requestId);
+    return Objects.hash(error, message, requestId);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class QueryResponse {\n");
+    sb.append("class QuerySubmittedResponse {\n");
     
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    results: ").append(toIndentedString(results)).append("\n");
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
     sb.append("}");
     return sb.toString();
